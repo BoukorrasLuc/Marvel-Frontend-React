@@ -104,7 +104,7 @@ const Favoris = ({
           </div>
         ) : (
           <>
-            {/* If there are personal favorites in the cookie * */}
+            {/* If there are personal favorites in the cookie */}
 
             {setErrorCharacter("")}
 
