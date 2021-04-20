@@ -15,7 +15,7 @@ const Favoris = ({
   // Variable to change favorites
   let favoris = false;
   let favorisComics = false;
-  // Création du tableau a vide , qui va stocker le tableua de cookie
+  // Creation of the empty array, which will store the cookie array
   let newTabFavoris;
   let newTabFavorisComics;
   // I create a state to relaunch my page each time the cookie is changed
