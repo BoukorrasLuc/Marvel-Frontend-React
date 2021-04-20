@@ -21,7 +21,6 @@ const Comics = () => {
 
   // state to store the request data
   const [data, setData] = useState();
-
   const [isLoading, setIsLoading] = useState(true);
 
   // State to store the data received in the input search
@@ -32,7 +31,7 @@ const Comics = () => {
   const [skip, setSkip] = useState(0);
   const [page, setPage] = useState(1);
 
-  let favoris = false;
+  let favorisComics = false;
 
   // State which allows you to restart the request when the content of the cookie changes
   const [reloadRequestFavoris, setReloadRequestFavoris] = useState(false);
@@ -110,7 +109,7 @@ const Comics = () => {
 
       <div>
         {data.results.map((comics, index) => {
-          favoris = false;
+          favorisComics = false;
           // if the id of my current comic book is present in the cookie
           if (typeof Cookies.get("FavorisComics") !== "undefined") {
             let cookie = JSON.parse(Cookies.get("FavorisComics"));
@@ -118,7 +117,7 @@ const Comics = () => {
               // If the id of the currently mapped comic book is present in the cookie, I pass the variable to true
               if (cookie[y]._id === comics._id) {
                 // If the variable turns to true, then my star color turns into valid
-                favoris = true;
+                favorisComics = true;
               }
             }
           }
@@ -126,7 +125,7 @@ const Comics = () => {
           return (
             <div className="comics" key={comics._id}>
               <div onClick={() => handleFavorite(comics)}>
-                {favoris ? (
+                {favorisComics ? (
                   <img
                     src={HulkHandgreen}
                     alt=""

@@ -13,14 +13,12 @@ const Favoris = ({
   setErrorCharacter,
 }) => {
   // Variable to change favorites
-
   let favoris = false;
   let favorisComics = false;
-  // Creation of the empty array, which will store the cookie array
+  // Création du tableau a vide , qui va stocker le tableua de cookie
   let newTabFavoris;
   let newTabFavorisComics;
   // I create a state to relaunch my page each time the cookie is changed
-
   const [reloadFavoris, setReloadFavoris] = useState(false);
 
   Cookies.get("FavorisCharacters")
@@ -32,7 +30,7 @@ const Favoris = ({
 
   // Function to add / remove a character / comics in fav
   const handleFavorite = (elem, from) => {
-    let ExistAlready = false;
+    let isAlreadyExist = false;
     // Click to add / remove a favorite character
     if (from === "character") {
       // I test if the cookie is full
@@ -46,7 +44,7 @@ const Favoris = ({
         for (let i = 0; i < newTabFavoris.length; i++) {
           if (newTabFavoris[i]._id === elem._id) {
             // the id is already present, so i pass my variable to true / THEREFORE DELETE FAVORITES
-            ExistAlready = true;
+            isAlreadyExist = true;
             // This means that i want to delete this character from my cookie
             newTabFavoris.splice(i, 1);
             // I insert my new array with the deleted character in the cookie
@@ -54,7 +52,7 @@ const Favoris = ({
           }
         }
       } // the id is not already present / So ADD FAVORITES
-      if (ExistAlready === false) {
+      if (isAlreadyExist === false) {
         // I then add my character in my array
         newTabFavoris.push(elem);
         // I insert my new array with the new character in the cookie
@@ -68,13 +66,13 @@ const Favoris = ({
       } else {
         for (let i = 0; i < newTabFavorisComics.length; i++) {
           if (newTabFavorisComics[i]._id === elem._id) {
-            ExistAlready = true;
+            isAlreadyExist = true;
             newTabFavorisComics.splice(i, 1);
             Cookies.set("FavorisComics", newTabFavorisComics);
           }
         }
       }
-      if (ExistAlready === false) {
+      if (isAlreadyExist === false) {
         newTabFavorisComics.push(elem);
         Cookies.set("FavorisComics", newTabFavorisComics);
       }
@@ -84,9 +82,9 @@ const Favoris = ({
   };
 
   return (
-    <div className="favoris-container">
-      {/* If no favorite character in the cookie */}
-      <div className="favoris-characters">
+    <>
+      <div className="favoris-container">
+        {/* If no favorite character in the cookie */}
         {!Cookies.get("FavorisCharacters") ||
         Cookies.get("FavorisCharacters") === "[]" ? (
           <div style={{ height: "100vh" }}>
@@ -106,7 +104,7 @@ const Favoris = ({
           </div>
         ) : (
           <>
-            {/* If there are personal favorites in the cookie */}
+            {/* If there are personal favorites in the cookie * */}
 
             {setErrorCharacter("")}
 
@@ -120,7 +118,6 @@ const Favoris = ({
                   favoris = true;
                 }
               }
-
               return (
                 <div className="favoris-characters" id={character._id} key={i}>
                   <div className="card">
@@ -157,78 +154,80 @@ const Favoris = ({
             })}
           </>
         )}
-      </div>
-      <div className="favoris-comics">
-        {!Cookies.get("FavorisComics") ||
-        Cookies.get("FavorisComics") === "[]" ? (
-          <div style={{ height: "100vh" }}>
-            {setErrorComics("Aucun résultat de comics")}
-            <span
-              style={{
-                backgroundColor: "white",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginTop: "10px",
-                color: "black",
-              }}
-            >
-              {errorComics}
-            </span>
-          </div>
-        ) : (
-          <>
-            {setErrorComics("")}
+        <div className="favoris-comics">
+          {!Cookies.get("FavorisComics") ||
+          Cookies.get("FavorisComics") === "[]" ? (
+            <div style={{ height: "100vh" }}>
+              {setErrorComics("Aucun résultat de comics")}
+              <span
+                style={{
+                  backgroundColor: "white",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: "10px",
+                  color: "black",
+                }}
+              >
+                {errorComics}
+              </span>
+            </div>
+          ) : (
+            <>
+              {setErrorComics("")}
 
-            {newTabFavorisComics.map((comic, i) => {
-              favorisComics = false;
-              for (let y = 0; y < newTabFavorisComics.length; y++) {
-                if (newTabFavorisComics[y]._id === comic._id) {
-                  favorisComics = true;
+              {newTabFavorisComics.map((comic, i) => {
+                favorisComics = false;
+
+                for (let y = 0; y < newTabFavorisComics.length; y++) {
+                  if (newTabFavorisComics[y]._id === comic._id) {
+                    favorisComics = true;
+                  }
                 }
-              }
 
-              return (
-                <div className="favoris-comics" id={comic._id} key={i}>
-                  <div className="card">
-                    <div onClick={() => handleFavorite(comic, "comics")}>
-                      {favoris ? (
-                        <img
-                          src={HulkHandgreen}
-                          alt=""
-                          style={{
-                            height: "20px",
-                            width: "20px",
-                          }}
-                        />
-                      ) : (
-                        <img
-                          src={HulkHandblack}
-                          alt=""
-                          style={{
-                            height: "20px",
-                            width: "20px",
-                            backgroundColor: "#b60304",
-                          }}
-                        />
-                      )}
+                return (
+                  <div className="favoris-comics" id={comic._id} key={i}>
+                    <div className="card">
+                      <div onClick={() => handleFavorite(comic, "comics")}>
+                        {favorisComics ? (
+                          <img
+                            src={HulkHandgreen}
+                            alt=""
+                            style={{
+                              height: "20px",
+                              width: "20px",
+                            }}
+                          />
+                        ) : (
+                          <img
+                            src={HulkHandblack}
+                            alt=""
+                            style={{
+                              height: "20px",
+                              width: "20px",
+                              backgroundColor: "#b60304",
+                            }}
+                          />
+                        )}
+                      </div>
+                      <span>{comic.title}</span>
+                      <img
+                        src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                        alt={comic.name}
+                      />
+
+                      <span style={{ fontSize: "15px" }}>
+                        {comic.description}
+                      </span>
                     </div>
-                    <span>{comic.title}</span>
-                    <img
-                      src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                      alt={comic.name}
-                    />
-                    <span style={{ fontSize: "15px" }}>
-                      {comic.description}
-                    </span>
                   </div>
-                </div>
-              );
-            })}
-          </>
-        )}
+                );
+              })}
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Favoris;
