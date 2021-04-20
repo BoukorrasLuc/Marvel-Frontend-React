@@ -1,47 +1,35 @@
+// scss
 import "./App.scss";
 
+// packages
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
-import Cookies from "js-cookie";
 
-//containers
+// containers
 import Home from "./containers/Home";
-import Signup from "./containers/Signup";
-import Login from "./containers/Login";
 import Comics from "./containers/Comics";
 import Characters from "./containers/Characters";
+import Favoris from "./containers/Favoris";
+import CharacterId from "./containers/CharacterId";
 
-//components
+// components
 import Header from "./components/Header";
-import CharacterId from "./components/CharacterId";
 
+// Import icons
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 library.add(faAngleRight, faAngleLeft);
 
 function App() {
-  const [userToken, setUserToken] = useState();
+  // state to store the errors to display.
+  const [errorComics, setErrorComics] = useState("");
+  const [errorCharacter, setErrorCharacter] = useState("");
 
-  const setUser = (token) => {
-    if (token) {
-      Cookies.set("userToken", token, { expires: 1 });
-      setUserToken(token);
-    } else {
-      Cookies.remove("userToken");
-      setUserToken(null);
-    }
-  };
   return (
     <div>
       <Router>
-        <Header userToken={userToken} setUser={setUser} />
+        <Header />
         <Switch>
-          <Route path="/Signup">
-            <Signup setUser={setUser} />
-          </Route>
-          <Route path="/login">
-            <Login userToken={userToken} setUser={setUser} />
-          </Route>
           <Route path="/comics/">
             <Comics />
           </Route>
@@ -50,6 +38,14 @@ function App() {
           </Route>
           <Route path="/character/:characterId">
             <CharacterId />
+          </Route>
+          <Route path="/favoris">
+            <Favoris
+              errorComics={errorComics}
+              setErrorComics={setErrorComics}
+              errorCharacter={errorCharacter}
+              setErrorCharacter={setErrorCharacter}
+            />
           </Route>
           <Route path="/">
             <Home />

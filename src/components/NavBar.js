@@ -1,15 +1,16 @@
+// import Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const NavBar = (props) => {
+const NavBar = ({ page, setPage, skip, setSkip, limit, setSearch, data }) => {
   return (
     <div className="fond-nav-bar">
-      {props.page > 1 ? (
+      {page > 1 ? (
         <FontAwesomeIcon
           className="left-right"
           icon="angle-left"
           onClick={() => {
-            props.setPage(props.page - 1);
-            props.setSkip(props.skip - props.limit);
+            setPage(page - 1);
+            setSkip(skip - limit);
           }}
         />
       ) : null}
@@ -19,18 +20,18 @@ const NavBar = (props) => {
           type="search"
           placeholder="Rechercher ..."
           onChange={(e) => {
-            props.setSearch(e.target.value);
+            setSearch(e.target.value);
           }}
         />
       </div>
 
-      {props.page * props.limit < props.data.count ? (
+      {page * limit < data.count ? (
         <FontAwesomeIcon
           className="left-right"
           icon="angle-right"
           onClick={() => {
-            props.setPage(props.page + 1);
-            props.setSkip(props.skip + props.limit);
+            setPage(page + 1);
+            setSkip(skip + limit);
           }}
         />
       ) : null}

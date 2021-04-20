@@ -1,3 +1,14 @@
+//////////// Loader  ////////////
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./assets/images/M6.jpg);
+  background-size: 501px;
+  height: 100vh;
+}
+
 //////////// HEADER  ////////////
 
 header {
@@ -10,13 +21,18 @@ header {
     "IM Fell Great Primer SC", sans-serif;
   font-size: 25px;
 
-  img {
+  .img1 {
     height: 80px;
     margin-left: 10px;
   }
+  .img2 {
+    height: 80px;
+    margin-right: 10px;
+  }
 
   .p-characters,
-  .p-comics {
+  .p-comics,
+  .p-favoris {
     display: inline-block;
     div {
       text-decoration: none;
@@ -105,9 +121,16 @@ header {
     color: white;
   }
 }
-//////////// Nav Bar  ////////////
+//////////// skip Bar  ////////////
 .skip-bar {
-  background-color: aquamarine;
+  background-color: #b60304;
+  button {
+    margin: 10px;
+    border: none;
+    font-family: "Waiting for the Sunrise";
+    border-radius: 5px;
+    background-color: #fff;
+  }
 }
 
 //////////// HOME Page  ////////////
@@ -117,23 +140,29 @@ header {
   background-size: 500px;
   height: 835px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 
-  .containereffect {
+  img {
+    width: 250px;
+    height: 380px;
+  }
+
+  .containereffect1,
+  .containereffect2 {
     position: relative;
     top: 6px;
-    right: 6px;
-    width: 247px;
-    height: 325px;
-    margin-right: 2px;
+    width: 250px;
+    height: 380px;
+
     .card {
       position: absolute;
       width: 100%;
       height: 100%;
       transform-style: preserve-3d;
       transition: all 1s ease;
-      // margin: 6px 0 10px;
+      border: solid 3px #edc21d;
+      box-shadow: 17px 17px 13px 0px rgba(0, 0, 0, 1);
 
       .front {
         position: absolute;
@@ -157,163 +186,11 @@ header {
       transform: rotateY(180deg);
     }
   }
-}
-
-//////////// LOGIN Page  ///////////
-
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  background-image: url(./assets/images/M6.jpg);
-  background-size: 501px;
-  font-family: "Waiting for the Sunrise", sans-serif;
-  font-size: 30px;
-
-  .fond-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 391px;
-    width: 400px;
-    background-color: rgb(0, 0, 0);
-    border-radius: 30px;
-    margin-bottom: 34px;
-
-    .title {
-      font-family: "Waiting for the Sunrise", sans-serif;
-      font-size: 30px;
-      color: white;
-    }
-
-    .title,
-    .email,
-    .password,
-    .login-error-message,
-    button {
-      margin-bottom: 30px;
-    }
-
-    .login-error-message {
-      color: white;
-      font-size: 20px;
-      text-align: center;
-      margin: 20px 0 20px 0;
-    }
-
-    button {
-      height: 30px;
-      width: 100%;
-      font-family: "Waiting for the Sunrise", sans-serif;
-      background-color: white;
-      border-radius: 5px;
-      background: none;
-      color: white;
-    }
-
-    span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 12px;
-      color: white;
-    }
-
-    input {
-      height: 30px;
-      width: 300px;
-      text-align: center;
-      border-radius: 5px;
-      border: none;
-      font-family: "Waiting for the Sunrise", sans-serif;
-    }
+  .containereffect1 {
+    right: 16px;
   }
-  .fond-form:hover {
-    box-shadow: 9px 10px 18px -3px rgba(0, 0, 0, 0.64);
-  }
-}
-
-//////////// SIGNUP Page  ///////////
-
-.signup-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  background-image: url(./assets/images/M6.jpg);
-  background-size: 501px;
-  font-family: "Waiting for the Sunrise", sans-serif;
-  font-size: 30px;
-
-  .fond-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 587px;
-    width: 400px;
-    background-color: rgb(0, 0, 0);
-    border-radius: 30px;
-    margin-top: 32px;
-
-    .title {
-      font-size: 30px;
-      color: white;
-    }
-    .title,
-    .email,
-    .username,
-    .password,
-    .description,
-    button {
-      margin-bottom: 30px;
-    }
-
-    .email-error {
-      font-size: 20px;
-      text-align: center;
-      margin: 20px 0 20px 0;
-      color: white;
-    }
-
-    button {
-      height: 30px;
-      width: 100%;
-      font-family: "Waiting for the Sunrise", sans-serif;
-      background-color: white;
-      border-radius: 5px;
-      background: none;
-      color: white;
-    }
-
-    span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 12px;
-      color: white;
-    }
-
-    input,
-    textarea {
-      height: 30px;
-      width: 300px;
-      text-align: center;
-      border-radius: 5px;
-      border: none;
-      font-family: "Waiting for the Sunrise", sans-serif;
-    }
-    textarea {
-      height: 60px;
-      resize: none;
-    }
-  }
-  .fond-form:hover {
-    box-shadow: 9px 10px 18px -3px rgba(0, 0, 0, 0.64);
+  .containereffect2 {
+    left: 3px;
   }
 }
 
@@ -371,12 +248,10 @@ header {
     flex-wrap: wrap;
 
     .characters {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
       background-color: rgb(0, 0, 0);
       margin: 50px 10px;
+      height: 500px;
 
       .name {
         padding-top: 10px;
@@ -398,7 +273,6 @@ header {
 .characterid-container {
   background-image: url(./assets/images/M6.jpg);
   background-size: 501px;
-
   font-family: "Waiting for the Sunrise", sans-serif;
   font-size: 18px;
   text-decoration: none;
@@ -416,7 +290,7 @@ header {
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      height: 600px;
+      height: 650px;
       width: 350px;
       background-color: black;
       margin: 50px 10px;
@@ -429,6 +303,67 @@ header {
       span {
         color: white;
         text-align: center;
+      }
+    }
+  }
+}
+
+//////////// Favoris Page  ////////////
+
+.favoris-container {
+  background-image: url(./assets/images/M6.jpg);
+  background-size: 501px;
+  height: 100%;
+  font-family: "Waiting for the Sunrise", sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .favoris-comics,
+  .favoris-characters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    .card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: rgb(0, 0, 0);
+      margin: 50px 10px;
+      width: 350px;
+    }
+    span {
+      color: white;
+      text-align: center;
+    }
+  }
+
+  .favoris-comics {
+    height: 100%;
+    .card {
+      height: 650px;
+
+      img {
+        width: 300px;
+        height: 450px;
+        margin: 20px;
+      }
+    }
+  }
+  .favoris-characters {
+    height: 100vh;
+    .card {
+      height: 600px;
+
+      img {
+        height: 300px;
+        width: 300px;
+        object-fit: cover;
+        margin: 20px;
       }
     }
   }

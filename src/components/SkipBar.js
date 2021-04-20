@@ -1,23 +1,23 @@
-const SkipBar = (props) => {
+const SkipBar = ({ setLimit }) => {
   return (
     <div className="skip-bar">
       <button
         onClick={() => {
-          props.setLimit(20);
+          setLimit(20);
         }}
       >
         [20]
       </button>
       <button
         onClick={() => {
-          props.setLimit(50);
+          setLimit(50);
         }}
       >
         [50]
       </button>
       <button
         onClick={() => {
-          props.setLimit(100);
+          setLimit(100);
         }}
       >
         [100]
