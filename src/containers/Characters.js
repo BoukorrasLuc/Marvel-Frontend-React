@@ -122,19 +122,30 @@ const Characters = () => {
             }
           }
 
+          console.log(characters.thumbnail.path);
+
+          const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
+
           return (
             <div className="characters" key={characters._id}>
               <div>
-                <Link
-                  to={`/character/${characters._id}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <img
-                    src={Info}
-                    alt=""
-                    style={{ height: "20px", width: "20px" }}
-                  />
-                </Link>
+                {characters.comics.length === 0 ? (
+                  <Link
+                    to={`/character/${characters._id}`}
+                    style={{ textDecoration: "none" }}
+                  ></Link>
+                ) : (
+                  <Link
+                    to={`/character/${characters._id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <img
+                      src={Info}
+                      alt=""
+                      style={{ height: "20px", width: "20px" }}
+                    />
+                  </Link>
+                )}
                 <div onClick={() => handleFavorite(characters)}>
                   {favoris ? (
                     <img
@@ -158,10 +169,24 @@ const Characters = () => {
 
               <div className="name">{characters.name}</div>
 
-              <img
-                src={`${characters.thumbnail.path}.${characters.thumbnail.extension}`}
-                alt={characters.name}
-              />
+              {characters.thumbnail.path === noImage ? (
+                <div
+                  style={{
+                    height: 300,
+                    width: 300,
+                    margin: 20,
+                    color: "red",
+                    fontSize: 15,
+                  }}
+                >
+                  Image non disponible dans la base de donnée.
+                </div>
+              ) : (
+                <img
+                  src={`${characters.thumbnail.path}.${characters.thumbnail.extension}`}
+                  alt={characters.name}
+                />
+              )}
             </div>
           );
         })}

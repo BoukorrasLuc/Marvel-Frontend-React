@@ -37,15 +37,11 @@ const CharacterId = () => {
         {data.comics.map((comics) => {
           return (
             <div className="comics" key={comics._id}>
-              {comics.title}
-
               <span>{comics.title}</span>
               <img
                 src={comics.thumbnail.path + "." + comics.thumbnail.extension}
                 alt={comics.title}
               />
-
-              <span>{comics.description}</span>
             </div>
           );
         })}
