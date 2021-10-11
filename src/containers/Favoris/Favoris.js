@@ -120,6 +120,8 @@ const Favoris = ({
                   favoris = true;
                 }
               }
+
+              const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
               return (
                 <div className="favoris-characters" id={character._id} key={i}>
                   <div className="card">
@@ -143,13 +145,29 @@ const Favoris = ({
                       )}
                     </div>
                     <span>{character.name}</span>
-                    <img
-                      src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                      alt={character.name}
-                    />
-                    <span style={{ fontSize: "15px" }}>
-                      {character.description}
-                    </span>
+
+                    {character.thumbnail.path === noImage ? (
+                      <div
+                        style={{
+                          height: 300,
+                          width: 300,
+                          margin: 20,
+                          color: "red",
+                          fontSize: 15,
+                          border: "solid 1px red",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        Image non disponible dans la base de données.
+                      </div>
+                    ) : (
+                      <img
+                        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                        alt={character.name}
+                      />
+                    )}
                   </div>
                 </div>
               );
@@ -187,6 +205,8 @@ const Favoris = ({
                   }
                 }
 
+                const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
+
                 return (
                   <div className="favoris-comics" id={comic._id} key={i}>
                     <div className="card">
@@ -213,14 +233,28 @@ const Favoris = ({
                         )}
                       </div>
                       <span>{comic.title}</span>
-                      <img
-                        src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                        alt={comic.name}
-                      />
-
-                      <span style={{ fontSize: "15px" }}>
-                        {comic.description}
-                      </span>
+                      {comic.thumbnail.path === noImage ? (
+                        <div
+                          style={{
+                            height: 450,
+                            width: 300,
+                            margin: 20,
+                            color: "red",
+                            fontSize: 15,
+                            border: "solid 1px red",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          Image non disponible dans la base de données.
+                        </div>
+                      ) : (
+                        <img
+                          src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                          alt={comic.name}
+                        />
+                      )}
                     </div>
                   </div>
                 );
