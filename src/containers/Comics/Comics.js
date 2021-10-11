@@ -188,7 +188,7 @@ const Comics = () => {
                           backgroundColor: "black",
                         }}
                       >
-                        Image non disponible dans la base de donnée.
+                        Image non disponible dans la base de données.
                       </div>
                     ) : (
                       <img
@@ -213,7 +213,7 @@ const Comics = () => {
                           textAlign: "center",
                         }}
                       >
-                        Non disponible dans la base de donnée.
+                        Non disponible dans la base de données.
                       </div>
                     ) : (
                       <div>{newDescription.substring(0, 1000)}</div>

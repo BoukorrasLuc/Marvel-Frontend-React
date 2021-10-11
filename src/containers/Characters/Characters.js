@@ -177,9 +177,10 @@ const Characters = () => {
                     margin: 20,
                     color: "red",
                     fontSize: 15,
+                    border: "solid 1px red",
                   }}
                 >
-                  Image non disponible dans la base de donnée.
+                  Image non disponible dans la base de données.
                 </div>
               ) : (
                 <img
