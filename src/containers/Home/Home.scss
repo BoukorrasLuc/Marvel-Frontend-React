@@ -19,6 +19,16 @@
     top: 6px;
     width: 375px;
     height: 570px;
+    margin-top: -50px;
+
+    .Titre {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 50px;
+      color: black;
+      background-color: #edc21d;
+      font-family: "Waiting for the Sunrise", sans-serif;
+    }
 
     .card {
       position: absolute;

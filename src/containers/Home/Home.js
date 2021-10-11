@@ -13,10 +13,9 @@ const Home = () => {
   return (
     <div className="home-container">
       {/* Link to the comics page with a css effect */}
-
       <Link to="/comics" style={{ textDecoration: "none" }}>
         <div className="containereffect1">
-          {/* <div>Comics</div> */}
+          <div className="Titre">Comics</div>
           <div className="card">
             <div className="front">
               <img alt="Comics" src={Comics} />
@@ -29,10 +28,9 @@ const Home = () => {
       </Link>
 
       {/* Link to the characters page with a css effect */}
-
       <Link to="/characters" style={{ textDecoration: "none" }}>
         <div className="containereffect2">
-          {/* <div>Personnages</div> */}
+          <div className="Titre">Personnages</div>
           <div className="card">
             <div className="front">
               <img alt="Comics" src={characters} />
