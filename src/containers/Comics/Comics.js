@@ -146,7 +146,7 @@ const Comics = () => {
                 comics.description === null) ||
               (comics.thumbnail.path === noImage &&
                 comics.description === "") ? (
-                <div></div>
+                <></>
               ) : (
                 <div className="comics-cards">
                   <div className="sectionLeft">
@@ -216,11 +216,7 @@ const Comics = () => {
                         Non disponible dans la base de donnée.
                       </div>
                     ) : (
-                      <div>
-                        {newDescription < 1000
-                          ? `${newDescription}`
-                          : `${newDescription.substring(0, 500)}...`}
-                      </div>
+                      <div>{newDescription.substring(0, 1000)}</div>
                     )}
                   </div>
                 </div>
