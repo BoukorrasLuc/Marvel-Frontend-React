@@ -1,0 +1,58 @@
+/////////// HOME Page  ////////////
+
+.home-container {
+  background-image: url(../../assets/images/M6.jpg);
+  background-size: 500px;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  img {
+    width: 375px;
+    height: 570px;
+  }
+
+  .containereffect1,
+  .containereffect2 {
+    position: relative;
+    top: 6px;
+    width: 375px;
+    height: 570px;
+
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      transform-style: preserve-3d;
+      transition: all 1s ease;
+      border: solid 3px #edc21d;
+      box-shadow: 17px 17px 13px 0px rgba(0, 0, 0, 1);
+
+      .front {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        background: #ffc728;
+        color: #333;
+        img {
+          object-fit: cover;
+        }
+      }
+      .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        background: #fafafa;
+        color: #333;
+        transform: rotateY(180deg);
+      }
+    }
+    .card:hover {
+      transform: rotateY(180deg);
+    }
+  }
+}

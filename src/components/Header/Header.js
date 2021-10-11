@@ -1,8 +1,10 @@
+import "./Header.scss";
+
 // packages
 import { Link } from "react-router-dom";
 
 // Import image
-import header from "../assets/images/M1.jpg";
+import header from "../../assets/images/M1.jpg";
 
 const Header = () => {
   return (

@@ -1,11 +1,13 @@
+import "./Home.scss";
+
 // packages
 import { Link } from "react-router-dom";
 
 // Import Images
-import thanos from "../assets/images/1973-thanos-06.jpg";
-import characters from "../assets/images/avengers-vs-xmen.jpg";
-import Comics from "../assets/images/1973-thanos-08.jpg";
-import Comics2 from "../assets/images/marvel-iron-man-cover-i13712.jpg";
+import thanos from "../../assets/images/1973-thanos-06.jpg";
+import characters from "../../assets/images/avengers-vs-xmen.jpg";
+import Comics from "../../assets/images/1973-thanos-08.jpg";
+import Comics2 from "../../assets/images/marvel-iron-man-cover-i13712.jpg";
 
 const Home = () => {
   return (

@@ -1,3 +1,5 @@
+import "./NavBar.scss";
+
 // import Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

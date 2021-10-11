@@ -1,0 +1,46 @@
+//////////// HEADER  ////////////
+
+header {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  font-family: "Waiting for the Sunrise", "Londrina Sketch",
+    "IM Fell Great Primer SC", sans-serif;
+  font-size: 25px;
+
+  .img1 {
+    height: 80px;
+    margin-left: 10px;
+  }
+  .img2 {
+    height: 80px;
+    margin-right: 10px;
+  }
+
+  .p-characters,
+  .p-comics,
+  .p-favoris {
+    display: inline-block;
+    div {
+      text-decoration: none;
+      color: #fff;
+    }
+    div::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #fff;
+      transition: width 0.3s;
+      text-decoration: none;
+      font-size: 30px;
+      color: #fff;
+    }
+    div:hover::after {
+      width: 100%;
+      transition: width 1s;
+    }
+  }
+}

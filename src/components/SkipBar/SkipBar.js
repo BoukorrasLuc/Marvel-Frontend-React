@@ -1,3 +1,5 @@
+import "./SkipBar.scss";
+
 const SkipBar = ({ setLimit }) => {
   return (
     <div className="skip-bar">

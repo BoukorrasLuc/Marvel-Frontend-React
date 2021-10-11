@@ -1,0 +1,41 @@
+//////////// CharacterId Page  ////////////
+
+.characterid-container {
+  background-image: url(../../assets/images/M6.jpg);
+  background-size: 501px;
+  font-family: "Waiting for the Sunrise", sans-serif;
+  font-size: 18px;
+  text-decoration: none;
+  min-height: 100vh;
+  max-height: 100%;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .comics {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 650px;
+      width: 350px;
+      background-color: black;
+      margin: 50px 10px;
+      font-size: 32px;
+
+      img {
+        width: 300px;
+        height: 450px;
+        margin: 20px;
+      }
+      span:nth-child(1) {
+        color: white;
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+  }
+}

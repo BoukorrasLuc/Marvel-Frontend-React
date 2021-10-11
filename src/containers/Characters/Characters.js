@@ -1,3 +1,5 @@
+import "./Characters.scss";
+
 // packages
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -6,13 +8,13 @@ import Cookies from "js-cookie";
 import { useLoading, Puff } from "@agney/react-loading";
 
 // components
-import NavBar from "../components/NavBar";
-import SkipBar from "../components/SkipBar";
+import NavBar from "../../components/NavBar/NavBar";
+import SkipBar from "../../components/SkipBar/SkipBar";
 
 // Import Images
-import HulkHandblack from "../assets/images/Hulk-Hand-black.png";
-import HulkHandgreen from "../assets/images/Hulk-Hand-green.png";
-import Info from "../assets/images/iconmonstr-info-thin-240.png";
+import HulkHandblack from "../../assets/images/Hulk-Hand-black.png";
+import HulkHandgreen from "../../assets/images/Hulk-Hand-green.png";
+import Info from "../../assets/images/iconmonstr-info-thin-240.png";
 
 const Characters = () => {
   const { containerProps, indicatorEl } = useLoading({

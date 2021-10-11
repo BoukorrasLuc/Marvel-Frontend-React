@@ -1,0 +1,15 @@
+//////////// skip Bar  ////////////
+.skip-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #b60304;
+  button {
+    margin: 10px;
+    border: none;
+    font-family: "Waiting for the Sunrise";
+    border-radius: 5px;
+    background-color: #fff;
+  }
+}

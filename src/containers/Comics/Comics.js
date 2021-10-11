@@ -1,3 +1,5 @@
+import "./Comics.scss";
+
 // packages
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -5,12 +7,12 @@ import Cookies from "js-cookie";
 import { useLoading, Puff } from "@agney/react-loading";
 
 // components
-import NavBar from "../components/NavBar";
-import SkipBar from "../components/SkipBar";
+import NavBar from "../../components/NavBar/NavBar";
+import SkipBar from "../../components/SkipBar/SkipBar";
 
 // Import Images
-import HulkHandblack from "../assets/images/Hulk-Hand-black.png";
-import HulkHandgreen from "../assets/images/Hulk-Hand-green.png";
+import HulkHandblack from "../../assets/images/Hulk-Hand-black.png";
+import HulkHandgreen from "../../assets/images/Hulk-Hand-green.png";
 
 const Comics = () => {
   // Loader
@@ -217,7 +219,7 @@ const Comics = () => {
                       <div>
                         {newDescription < 1000
                           ? `${newDescription}`
-                          : `${newDescription.substring(0, 1000)}...`}
+                          : `${newDescription.substring(0, 500)}...`}
                       </div>
                     )}
                   </div>

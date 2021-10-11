@@ -6,14 +6,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 
 // containers
-import Home from "./containers/Home";
-import Comics from "./containers/Comics";
-import Characters from "./containers/Characters";
-import Favoris from "./containers/Favoris";
-import CharacterId from "./containers/CharacterId";
+import Home from "./containers/Home/Home";
+import Comics from "./containers/Comics/Comics";
+import Characters from "./containers/Characters/Characters";
+import Favoris from "./containers/Favoris/Favoris";
+import CharacterId from "./containers/CharacterId/CharacterId";
 
 // components
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 
 // Import icons
 import { library } from "@fortawesome/fontawesome-svg-core";

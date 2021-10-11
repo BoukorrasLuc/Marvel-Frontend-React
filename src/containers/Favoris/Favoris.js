@@ -1,10 +1,12 @@
+import "./Favoris.scss";
+
 // packages
 import Cookies from "js-cookie";
 import { useState } from "react";
 
 // Import Images
-import HulkHandblack from "../assets/images/Hulk-Hand-black.png";
-import HulkHandgreen from "../assets/images/Hulk-Hand-green.png";
+import HulkHandblack from "../../assets/images/Hulk-Hand-black.png";
+import HulkHandgreen from "../../assets/images/Hulk-Hand-green.png";
 
 const Favoris = ({
   setErrorComics,

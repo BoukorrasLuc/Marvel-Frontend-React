@@ -1,0 +1,32 @@
+//////////// Nav Bar  ////////////
+
+.fond-nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+
+  background-color: #b60304;
+  position: sticky;
+  top: 0;
+
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    input {
+      height: 40px;
+      width: 300px;
+      text-align: center;
+      border-radius: 5px;
+      border: none;
+      font-family: "Waiting for the Sunrise";
+    }
+  }
+  .left-right {
+    color: white;
+    padding: 5px;
+  }
+}

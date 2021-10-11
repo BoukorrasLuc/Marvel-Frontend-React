@@ -1,0 +1,60 @@
+/////////// Favoris Page  ////////////
+
+.favoris-container {
+  background-image: url(../../assets/images/M6.jpg);
+  background-size: 501px;
+  height: 100%;
+  font-family: "Waiting for the Sunrise", sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .favoris-comics,
+  .favoris-characters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    .card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: rgb(0, 0, 0);
+      margin: 50px 10px;
+      width: 350px;
+    }
+    span {
+      color: white;
+      text-align: center;
+    }
+  }
+
+  .favoris-comics {
+    height: 100%;
+    .card {
+      height: 650px;
+
+      img {
+        width: 300px;
+        height: 450px;
+        margin: 20px;
+      }
+    }
+  }
+  .favoris-characters {
+    height: 100vh;
+    .card {
+      height: 600px;
+
+      img {
+        height: 300px;
+        width: 300px;
+        object-fit: cover;
+        margin: 20px;
+      }
+    }
+  }
+}
