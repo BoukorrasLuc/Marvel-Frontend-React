@@ -124,6 +124,8 @@ const Comics = () => {
 
           const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
 
+          // I am using a regex to search the string for all the html tags and I delete these tag
+
           let htmlTagRegexp = /<\w+>|<\/\w+>/g;
 
           function removeHTMLTag(data) {
@@ -213,11 +215,9 @@ const Comics = () => {
                       </div>
                     ) : (
                       <div>
-                        {/* {comics.description < 1000
+                        {newDescription < 1000
                           ? `${newDescription}`
-                          : `${comics.description.substring(0, 10000)}...`} */}
-
-                        {newDescription}
+                          : `${newDescription.substring(0, 1000)}...`}
                       </div>
                     )}
                   </div>
