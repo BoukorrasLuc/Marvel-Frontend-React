@@ -107,7 +107,7 @@ const Comics = () => {
         limit={limit}
       />
 
-      <div>
+      <div className="comics-wrapped">
         {data.results.map((comics, index) => {
           favorisComics = false;
           // if the id of my current comic book is present in the cookie
@@ -122,32 +122,107 @@ const Comics = () => {
             }
           }
 
+          const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
+
+          let htmlTagRegexp = /<\w+>|<\/\w+>/g;
+
+          function removeHTMLTag(data) {
+            if (htmlTagRegexp.test(data)) {
+              data = data.replace(htmlTagRegexp, "");
+              return data;
+            } else {
+              return data;
+            }
+          }
+          let newDescription = removeHTMLTag(comics.description);
+
           return (
-            <div className="comics" key={comics._id}>
-              <div onClick={() => handleFavorite(comics)}>
-                {favorisComics ? (
-                  <img
-                    src={HulkHandgreen}
-                    alt=""
-                    style={{ height: "20px", width: "20px" }}
-                  />
-                ) : (
-                  <img
-                    src={HulkHandblack}
-                    alt=""
-                    style={{
-                      height: "20px",
-                      width: "20px",
-                      backgroundColor: "#b60304",
-                    }}
-                  />
-                )}
-              </div>
-              <span>{comics.title}</span>
-              <img
-                src={comics.thumbnail.path + "." + comics.thumbnail.extension}
-                alt={comics.title}
-              />
+            <div key={comics._id}>
+              {(comics.thumbnail.path === noImage &&
+                comics.description === null) ||
+              (comics.thumbnail.path === noImage &&
+                comics.description === "") ? (
+                <div></div>
+              ) : (
+                <div className="comics-cards">
+                  <div className="sectionLeft">
+                    <div
+                      className="comics-fav"
+                      onClick={() => handleFavorite(comics)}
+                    >
+                      {favorisComics ? (
+                        <img
+                          src={HulkHandgreen}
+                          alt=""
+                          style={{ height: "20px", width: "20px" }}
+                        />
+                      ) : (
+                        <img
+                          src={HulkHandblack}
+                          alt=""
+                          style={{
+                            height: "20px",
+                            width: "20px",
+                            backgroundColor: "#b60304",
+                          }}
+                        />
+                      )}
+                    </div>
+                    <span>{comics.title}</span>
+
+                    {comics.thumbnail.path === noImage ? (
+                      <div
+                        style={{
+                          height: 450,
+                          width: 300,
+                          margin: 20,
+                          color: "white",
+                          fontSize: 25,
+                          textAlign: "center",
+                          display: "flex",
+                          alignItems: "center",
+                          backgroundColor: "black",
+                        }}
+                      >
+                        Image non disponible dans la base de donnée.
+                      </div>
+                    ) : (
+                      <img
+                        className="img-comics"
+                        src={
+                          comics.thumbnail.path +
+                          "." +
+                          comics.thumbnail.extension
+                        }
+                        alt={comics.title}
+                      />
+                    )}
+                  </div>
+                  <div className="sectionRight">
+                    {comics.description === null ||
+                    comics.description === "" ? (
+                      <div
+                        style={{
+                          margin: 20,
+                          color: "white",
+                          fontSize: 25,
+                          textAlign: "center",
+                        }}
+                      >
+                        Non disponible dans la base de donnée.
+                      </div>
+                    ) : (
+                      <div>
+                        {/* {comics.description < 1000
+                          ? `${newDescription}`
+                          : `${comics.description.substring(0, 10000)}...`} */}
+
+                        {newDescription}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           );
         })}

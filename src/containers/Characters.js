@@ -122,8 +122,6 @@ const Characters = () => {
             }
           }
 
-          console.log(characters.thumbnail.path);
-
           const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
 
           return (

@@ -97,19 +97,23 @@ header {
 //////////// Nav Bar  ////////////
 
 .fond-nav-bar {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+
   background-color: #b60304;
   position: sticky;
-  top: 20px;
+  top: 0;
 
   .search-bar {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 50px;
+
     input {
-      height: 30px;
+      height: 40px;
       width: 300px;
       text-align: center;
       border-radius: 5px;
@@ -119,10 +123,15 @@ header {
   }
   .left-right {
     color: white;
+    padding: 5px;
   }
 }
 //////////// skip Bar  ////////////
 .skip-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: #b60304;
   button {
     margin: 10px;
@@ -144,16 +153,16 @@ header {
   align-items: center;
 
   img {
-    width: 250px;
-    height: 380px;
+    width: 375px;
+    height: 570px;
   }
 
   .containereffect1,
   .containereffect2 {
     position: relative;
     top: 6px;
-    width: 250px;
-    height: 380px;
+    width: 375px;
+    height: 570px;
 
     .card {
       position: absolute;
@@ -190,12 +199,6 @@ header {
       transform: rotateY(180deg);
     }
   }
-  .containereffect1 {
-    right: 16px;
-  }
-  .containereffect2 {
-    left: 3px;
-  }
 }
 
 //////////// Comics Page  ////////////
@@ -208,30 +211,57 @@ header {
   text-decoration: none;
   width: 100vw;
 
-  div {
+  .comics-wrapped {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 
-    .comics {
+    .comics-cards {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      height: 600px;
-      width: 350px;
+      flex-direction: row;
+      height: 610px;
+      width: 700px;
       background-color: black;
       margin: 50px 10px;
+      border-radius: 10px;
 
-      img {
-        width: 300px;
-        height: 450px;
-        margin: 20px;
+      .sectionLeft {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #b60304;
+        width: 50%;
+        height: 95%;
+        margin: 15px;
+        border-radius: 10px;
+
+        .comics-fav {
+          // background-color: #b60304;
+          // height: 25px;
+          // width: 25px;
+          margin: 10px 0;
+        }
+        .img-comics {
+          width: 300px;
+          height: 450px;
+          margin: 20px;
+        }
+        span {
+          color: white;
+          text-align: center;
+          font-size: 20px;
+          margin: 5px;
+        }
       }
-      span {
+      .sectionRight {
         color: white;
-        text-align: center;
+        font-size: 20px;
+        width: 50%;
+        margin: 20px;
       }
     }
   }
