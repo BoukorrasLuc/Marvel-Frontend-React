@@ -9,32 +9,52 @@
   min-height: 100vh;
   max-height: 100%;
 
-  div {
+  .map-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 
-    .comics {
+    .comics-cards {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      height: 650px;
-      width: 350px;
+      flex-direction: row;
+      height: 610px;
+      width: 700px;
       background-color: black;
       margin: 50px 10px;
-      font-size: 32px;
+      border-radius: 10px;
 
-      img {
-        width: 300px;
-        height: 450px;
-        margin: 20px;
+      .sectionLeft {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #b60304;
+        width: 50%;
+        height: 95%;
+        margin: 15px;
+        border-radius: 10px;
+
+        .img-comics {
+          width: 300px;
+          height: 450px;
+          margin: 20px;
+        }
+        span {
+          color: white;
+          text-align: center;
+          font-size: 20px;
+          margin: 5px;
+        }
       }
-      span:nth-child(1) {
+      .sectionRight {
         color: white;
-        text-align: center;
         font-size: 18px;
+        width: 50%;
+        margin: 20px;
+        cursor: pointer;
       }
     }
   }
