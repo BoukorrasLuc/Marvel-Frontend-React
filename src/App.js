@@ -1,21 +1,25 @@
-// scss
+// Scss
 import "./App.scss";
 
-// packages
+// Packages
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
-// containers
+// Modales
+import LogiqueModale from "./containers/Modales/LogiqueModale";
+
+// Containers
 import Home from "./containers/Home/Home";
 import Comics from "./containers/Comics/Comics";
 import Characters from "./containers/Characters/Characters";
 import Favoris from "./containers/Favoris/Favoris";
 import CharacterId from "./containers/CharacterId/CharacterId";
 
-// components
+// Components
 import Header from "./components/Header/Header";
 
-// Import icons
+// Icons
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 library.add(faAngleRight, faAngleLeft);
@@ -25,10 +29,31 @@ function App() {
   const [errorComics, setErrorComics] = useState("");
   const [errorCharacter, setErrorCharacter] = useState("");
 
+  const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+  const [userAccount, setUserAccount] = useState();
+
+  const setUser = (token) => {
+    if (token) {
+      Cookies.set("userToken", token, { expires: 7 });
+      setUserToken(token);
+    } else {
+      Cookies.remove("userToken");
+      setUserToken(null);
+    }
+  };
+
+  const { reveleModaleLogin, toggleModaleLogin, changeReveleModaleLogin } =
+    LogiqueModale();
+
   return (
     <div>
       <Router>
-        <Header />
+        <Header
+          userToken={userToken}
+          setUser={setUser}
+          setUserToken={setUserToken}
+          toggleModaleLogin={toggleModaleLogin}
+        />
         <Switch>
           <Route path="/comics/">
             <Comics />
@@ -48,7 +73,14 @@ function App() {
             />
           </Route>
           <Route path="/">
-            <Home />
+            <Home
+              setUserAccount={setUserAccount}
+              setUserToken={setUserToken}
+              setUser={setUser}
+              reveleModaleLogin={reveleModaleLogin}
+              toggleModaleLogin={toggleModaleLogin}
+              changeReveleModaleLogin={changeReveleModaleLogin}
+            />
           </Route>
         </Switch>
       </Router>

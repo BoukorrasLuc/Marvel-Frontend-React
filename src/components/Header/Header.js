@@ -1,12 +1,13 @@
+// Scss
 import "./Header.scss";
 
-// packages
+// Packages
 import { Link } from "react-router-dom";
 
 // Import image
 import header from "../../assets/images/M1.jpg";
 
-const Header = () => {
+const Header = ({ setUser, userToken, toggleModaleLogin }) => {
   return (
     <header>
       <Link to="/">
@@ -35,6 +36,24 @@ const Header = () => {
       >
         <div>Favoris</div>
       </Link>
+
+      {userToken ? null : (
+        <div className="p-favoris" onClick={toggleModaleLogin}>
+          <div>Login</div>
+        </div>
+      )}
+
+      {userToken ? (
+        <div
+          className="p-favoris"
+          onClick={() => {
+            setUser(null);
+          }}
+        >
+          <div>Logout</div>
+        </div>
+      ) : null}
+
       <Link to="/">
         <img className="img2" src={header} alt="Super héros Marvel" />
       </Link>

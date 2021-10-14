@@ -99,6 +99,7 @@ const Favoris = ({
                 justifyContent: "center",
                 marginTop: "10px",
                 color: "black",
+                marginRight: 20,
               }}
             >
               {errorCharacter}
@@ -187,6 +188,7 @@ const Favoris = ({
                   justifyContent: "center",
                   marginTop: "10px",
                   color: "black",
+                  marginRight: 20,
                 }}
               >
                 {errorComics}
