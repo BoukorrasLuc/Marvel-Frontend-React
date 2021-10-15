@@ -1,84 +1,92 @@
 // Scss
-import "./ModaleLogin.scss";
+import "./ModaleSignUp.scss";
 
 // Import Packages
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-const ModaleLogin = ({
+const ModaleSignUp = ({
   setUser,
-  setUserAccount,
-  reveleModaleLogin,
-  toggleModaleLogin,
-  changeReveleModaleLogin,
+  reveleModaleSignUp,
+  toggleModaleSignUp,
+  changeReveleModaleSignUp,
 }) => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState();
 
   const history = useHistory();
 
-  // we create a function which makes a request to find the user
-  const onSubmit = async (event) => {
+  // we create a function which makes a request to create the user
+  const handleSubmit = async (event) => {
     try {
       event.preventDefault();
       const response = await axios.post(
-        "https://marvel-backend-luc.herokuapp.com/user/login",
-
+        "https://marvel-backend-luc.herokuapp.com/user/signup",
         {
+          username: username,
           email: email,
           password: password,
         }
       );
       if (response.data.token) {
         setUser(response.data.token);
-        setUserAccount(response.data);
         history.push("/");
-        changeReveleModaleLogin(!reveleModaleLogin);
+        changeReveleModaleSignUp(!reveleModaleSignUp);
       }
     } catch (error) {
-      if (error.response && error.response.status === 400) {
-        setErrorMessage("Mauvais email ou mot de passe");
+      if (error.response.status === 400) {
+        setErrorMessage("Cet email a déjà un compte chez nous !");
       }
     }
   };
 
   return (
     <div>
-      {reveleModaleLogin ? (
+      {reveleModaleSignUp ? (
         <React.Fragment>
-          <div className="overlayModaleLogin">
-            <div className="wrapperModaleLogin">
-              <div className="modaleModaleLogin">
+          <div className="overlayModaleSignUp">
+            <div className="wrapperModaleSignUp">
+              <div className="modaleModaleSignUp">
                 <div className="modaleTop">
-                  <h2>Se connecter</h2>
+                  <h2>S'inscrire</h2>
                 </div>
 
                 {/* we create a form to retrieve the data we need for authentication */}
 
-                <form onSubmit={onSubmit} className="ballon">
+                <form onSubmit={handleSubmit} className="ballon">
                   <span className="tip"></span>
+                  <div className="username">
+                    <input
+                      type="text"
+                      placeholder="Nom d'utilisateur"
+                      value={username}
+                      onChange={(event) => setUsername(event.target.value)}
+                    />
+                  </div>
                   <div className="email">
                     <input
+                      type="email"
+                      placeholder="Email"
+                      value={email}
                       onChange={(event) => {
                         setEmail(event.target.value);
                         setErrorMessage("");
                       }}
-                      placeholder="Adresse email"
-                      type="email"
                     />
+                    <div className="email-error">{errorMessage}</div>
                   </div>
-                  <div>
+                  <div className="password">
                     <input
-                      onChange={(event) => setPassword(event.target.value)}
                       type="password"
                       placeholder="Mot de passe"
                       autoComplete="on"
+                      value={password}
+                      onChange={(event) => setPassword(event.target.value)}
                     />
                   </div>
-
-                  <div>{errorMessage}</div>
 
                   <button className="submit" type="submit">
                     Se connecter
@@ -87,7 +95,7 @@ const ModaleLogin = ({
                 <button
                   type="button"
                   className="close"
-                  onClick={toggleModaleLogin}
+                  onClick={toggleModaleSignUp}
                 >
                   X
                 </button>
@@ -100,4 +108,4 @@ const ModaleLogin = ({
   );
 };
 
-export default ModaleLogin;
+export default ModaleSignUp;

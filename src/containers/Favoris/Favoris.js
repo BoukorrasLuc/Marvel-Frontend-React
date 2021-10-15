@@ -89,7 +89,7 @@ const Favoris = ({
         {/* If no favorite character in the cookie */}
         {!Cookies.get("FavorisCharacters") ||
         Cookies.get("FavorisCharacters") === "[]" ? (
-          <div style={{ height: "100vh" }}>
+          <div style={{ height: "100%" }}>
             {setErrorCharacter("Aucun résultat de personnages")}
             <span
               style={{
@@ -178,7 +178,7 @@ const Favoris = ({
         <div className="favoris-comics">
           {!Cookies.get("FavorisComics") ||
           Cookies.get("FavorisComics") === "[]" ? (
-            <div style={{ height: "100vh" }}>
+            <div style={{ height: "100%" }}>
               {setErrorComics("Aucun résultat de comics")}
               <span
                 style={{

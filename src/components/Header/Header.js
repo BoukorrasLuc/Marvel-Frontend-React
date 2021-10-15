@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 // Modales
 import ModaleLogin from "../../containers/Modales/ModaleLogin/ModaleLogin";
+import ModaleSignUp from "../../containers/Modales/ModaleSignUp/ModaleSignUp";
 
 // Import image
 import header from "../../assets/images/M1.jpg";
@@ -17,6 +18,9 @@ const Header = ({
   toggleModaleLogin,
   reveleModaleLogin,
   changeReveleModaleLogin,
+  toggleModaleSignUp,
+  reveleModaleSignUp,
+  changeReveleModaleSignUp,
 }) => {
   return (
     <header>
@@ -45,11 +49,19 @@ const Header = ({
         >
           <div>Favoris</div>
         </Link>
+
+        {userToken ? null : (
+          <div className="p-favoris" onClick={toggleModaleSignUp}>
+            <div>SignUp</div>
+          </div>
+        )}
+
         {userToken ? null : (
           <div className="p-favoris" onClick={toggleModaleLogin}>
             <div>Login</div>
           </div>
         )}
+
         {userToken ? (
           <div
             className="p-favoris"
@@ -72,6 +84,13 @@ const Header = ({
           changeReveleModaleLogin={changeReveleModaleLogin}
           setUser={setUser}
           setUserAccount={setUserAccount}
+        />
+
+        <ModaleSignUp
+          reveleModaleSignUp={reveleModaleSignUp}
+          toggleModaleSignUp={toggleModaleSignUp}
+          changeReveleModaleSignUp={changeReveleModaleSignUp}
+          setUser={setUser}
         />
       </div>
     </header>

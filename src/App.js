@@ -42,8 +42,14 @@ function App() {
     }
   };
 
-  const { reveleModaleLogin, toggleModaleLogin, changeReveleModaleLogin } =
-    LogiqueModale();
+  const {
+    reveleModaleLogin,
+    toggleModaleLogin,
+    changeReveleModaleLogin,
+    changeReveleModaleSignUp,
+    reveleModaleSignUp,
+    toggleModaleSignUp,
+  } = LogiqueModale();
 
   return (
     <div>
@@ -56,6 +62,9 @@ function App() {
           reveleModaleLogin={reveleModaleLogin}
           toggleModaleLogin={toggleModaleLogin}
           changeReveleModaleLogin={changeReveleModaleLogin}
+          reveleModaleSignUp={reveleModaleSignUp}
+          toggleModaleSignUp={toggleModaleSignUp}
+          changeReveleModaleSignUp={changeReveleModaleSignUp}
         />
         <Switch>
           <Route path="/comics/">
