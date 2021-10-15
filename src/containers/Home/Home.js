@@ -4,22 +4,13 @@ import "./Home.scss";
 // Packages
 import { Link } from "react-router-dom";
 
-// Modales
-import ModaleLogin from "../../containers/Modales/ModaleLogin/ModaleLogin";
-
 // Import Images
 import thanos from "../../assets/images/1973-thanos-06.jpg";
 import characters from "../../assets/images/avengers-vs-xmen.jpg";
 import Comics from "../../assets/images/1973-thanos-08.jpg";
 import Comics2 from "../../assets/images/marvel-iron-man-cover-i13712.jpg";
 
-const Home = ({
-  setUser,
-  setUserAccount,
-  reveleModaleLogin,
-  toggleModaleLogin,
-  changeReveleModaleLogin,
-}) => {
+const Home = () => {
   return (
     <div className="home-container">
       <div className="containerEffect">
@@ -55,16 +46,6 @@ const Home = ({
             </div>
           </div>
         </Link>
-      </div>
-
-      <div className="modales">
-        <ModaleLogin
-          reveleModaleLogin={reveleModaleLogin}
-          toggleModaleLogin={toggleModaleLogin}
-          changeReveleModaleLogin={changeReveleModaleLogin}
-          setUser={setUser}
-          setUserAccount={setUserAccount}
-        />
       </div>
     </div>
   );

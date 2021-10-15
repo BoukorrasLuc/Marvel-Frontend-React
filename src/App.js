@@ -52,7 +52,10 @@ function App() {
           userToken={userToken}
           setUser={setUser}
           setUserToken={setUserToken}
+          setUserAccount={setUserAccount}
+          reveleModaleLogin={reveleModaleLogin}
           toggleModaleLogin={toggleModaleLogin}
+          changeReveleModaleLogin={changeReveleModaleLogin}
         />
         <Switch>
           <Route path="/comics/">
@@ -77,9 +80,6 @@ function App() {
               setUserAccount={setUserAccount}
               setUserToken={setUserToken}
               setUser={setUser}
-              reveleModaleLogin={reveleModaleLogin}
-              toggleModaleLogin={toggleModaleLogin}
-              changeReveleModaleLogin={changeReveleModaleLogin}
             />
           </Route>
         </Switch>

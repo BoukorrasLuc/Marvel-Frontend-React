@@ -31,10 +31,15 @@ const ModaleLogin = ({
         }
       );
       if (response.data.token) {
+        console.log("1");
         setUser(response.data.token);
+        console.log("2");
         setUserAccount(response.data);
+        console.log("3");
         history.push("/");
+        console.log("4");
         changeReveleModaleLogin(!reveleModaleLogin);
+        console.log("5");
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
