@@ -16,6 +16,7 @@ const Favoris = ({
   setErrorCharacter,
   setUser,
   userToken,
+  userAccount,
 }) => {
   // Variable to change favorites
   let favoris = false;
@@ -88,190 +89,89 @@ const Favoris = ({
 
   let history = useHistory();
 
+  console.log(userAccount);
+
   return (
     <>
       <div className="favoris-container">
-        {userToken ? (
-          <div
-            className="p-favoris"
-            onClick={() => {
-              setUser(null);
-              history.push("/");
-            }}
-          >
-            <div>Logout</div>
+        <div className="topContainer">
+          <div className="titre">
+            Bonjour
+            {/* {userAccount.username} */}, bienvenue sur votre compte où tous
+            les favoris sont enregistrés.
           </div>
-        ) : null}
-
-        {/* If no favorite character in the cookie */}
-        {!Cookies.get("FavorisCharacters") ||
-        Cookies.get("FavorisCharacters") === "[]" ? (
-          <div style={{ height: "100%" }}>
-            {setErrorCharacter("Aucun résultat de personnages")}
-            <span
-              style={{
-                backgroundColor: "white",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginTop: "10px",
-                color: "black",
-                marginRight: 20,
+          {userToken ? (
+            <div
+              className="logout"
+              onClick={() => {
+                setUser(null);
+                history.push("/");
               }}
             >
-              {errorCharacter}
-            </span>
-          </div>
-        ) : (
-          <>
-            {/* If there are personal favorites in the cookie */}
+              <div>Logout</div>
+            </div>
+          ) : null}
+        </div>
 
-            {setErrorCharacter("")}
-
-            {newTabFavoris.map((character, i) => {
-              // I put the variable which will define if the id of the character is present in the cookie to false
-              favoris = false;
-              // I search in the cookie if the id of my character is present
-              for (let y = 0; y < newTabFavoris.length; y++) {
-                if (newTabFavoris[y]._id === character._id) {
-                  // If the id of the currently mapped character is present in the cookie, I pass the variable to true
-                  favoris = true;
-                }
-              }
-
-              const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
-              return (
-                <div className="favoris-characters" id={character._id} key={i}>
-                  <div className="card">
-                    <div onClick={() => handleFavorite(character, "character")}>
-                      {favoris ? (
-                        <img
-                          src={HulkHandgreen}
-                          alt=""
-                          style={{ height: "20px", width: "20px" }}
-                        />
-                      ) : (
-                        <img
-                          src={HulkHandblack}
-                          alt=""
-                          style={{
-                            height: "20px",
-                            width: "20px",
-                            backgroundColor: "#b60304",
-                          }}
-                        />
-                      )}
-                    </div>
-                    <span>{character.name}</span>
-
-                    {character.thumbnail.path === noImage ? (
-                      <div
-                        style={{
-                          height: 300,
-                          width: 300,
-                          margin: 20,
-                          color: "red",
-                          fontSize: 15,
-                          border: "solid 1px red",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        Image non disponible dans la base de données.
-                      </div>
-                    ) : (
-                      <img
-                        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                        alt={character.name}
-                      />
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </>
-        )}
-        <div className="favoris-comics">
-          {!Cookies.get("FavorisComics") ||
-          Cookies.get("FavorisComics") === "[]" ? (
-            <div style={{ height: "100%" }}>
-              {setErrorComics("Aucun résultat de comics")}
-              <span
-                style={{
-                  backgroundColor: "white",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginTop: "10px",
-                  color: "black",
-                  marginRight: 20,
-                }}
-              >
-                {errorComics}
-              </span>
+        <div className="middleContainer">
+          {/* If no favorite character in the cookie */}
+          {!Cookies.get("FavorisCharacters") ||
+          Cookies.get("FavorisCharacters") === "[]" ? (
+            <div className="favorisCharactersError">
+              {setErrorCharacter("Aucun résultat de personnages")}
+              <span>{errorCharacter}</span>
             </div>
           ) : (
             <>
-              {setErrorComics("")}
+              {/* If there are personal favorites in the cookie */}
 
-              {newTabFavorisComics.map((comic, i) => {
-                favorisComics = false;
+              {setErrorCharacter("")}
 
-                for (let y = 0; y < newTabFavorisComics.length; y++) {
-                  if (newTabFavorisComics[y]._id === comic._id) {
-                    favorisComics = true;
+              {newTabFavoris.map((character, i) => {
+                // I put the variable which will define if the id of the character is present in the cookie to false
+                favoris = false;
+                // I search in the cookie if the id of my character is present
+                for (let y = 0; y < newTabFavoris.length; y++) {
+                  if (newTabFavoris[y]._id === character._id) {
+                    // If the id of the currently mapped character is present in the cookie, I pass the variable to true
+                    favoris = true;
                   }
                 }
 
                 const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
-
                 return (
-                  <div className="favoris-comics" id={comic._id} key={i}>
+                  <div
+                    className="favoris-characters"
+                    id={character._id}
+                    key={i}
+                  >
                     <div className="card">
-                      <div onClick={() => handleFavorite(comic, "comics")}>
-                        {favorisComics ? (
-                          <img
-                            src={HulkHandgreen}
-                            alt=""
-                            style={{
-                              height: "20px",
-                              width: "20px",
-                            }}
-                          />
+                      <div
+                        className="characters"
+                        onClick={() => handleFavorite(character, "character")}
+                      >
+                        {favoris ? (
+                          <img src={HulkHandgreen} alt="" />
                         ) : (
                           <img
                             src={HulkHandblack}
                             alt=""
                             style={{
-                              height: "20px",
-                              width: "20px",
                               backgroundColor: "#b60304",
                             }}
                           />
                         )}
                       </div>
-                      <span>{comic.title}</span>
-                      {comic.thumbnail.path === noImage ? (
-                        <div
-                          style={{
-                            height: 450,
-                            width: 300,
-                            margin: 20,
-                            color: "red",
-                            fontSize: 15,
-                            border: "solid 1px red",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
+                      <span>{character.name}</span>
+
+                      {character.thumbnail.path === noImage ? (
+                        <div className="noImageCharacters">
                           Image non disponible dans la base de données.
                         </div>
                       ) : (
                         <img
-                          src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                          alt={comic.name}
+                          src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                          alt={character.name}
                         />
                       )}
                     </div>
@@ -280,6 +180,65 @@ const Favoris = ({
               })}
             </>
           )}
+          <div className="favoris-comics">
+            {!Cookies.get("FavorisComics") ||
+            Cookies.get("FavorisComics") === "[]" ? (
+              <div className="favorisComicsError">
+                {setErrorComics("Aucun résultat de comics")}
+                <span>{errorComics}</span>
+              </div>
+            ) : (
+              <>
+                {setErrorComics("")}
+
+                {newTabFavorisComics.map((comic, i) => {
+                  favorisComics = false;
+
+                  for (let y = 0; y < newTabFavorisComics.length; y++) {
+                    if (newTabFavorisComics[y]._id === comic._id) {
+                      favorisComics = true;
+                    }
+                  }
+
+                  const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
+
+                  return (
+                    <div className="favoris-comics" id={comic._id} key={i}>
+                      <div className="card">
+                        <div
+                          className="comics"
+                          onClick={() => handleFavorite(comic, "comics")}
+                        >
+                          {favorisComics ? (
+                            <img src={HulkHandgreen} alt="" />
+                          ) : (
+                            <img
+                              src={HulkHandblack}
+                              alt=""
+                              style={{
+                                backgroundColor: "#b60304",
+                              }}
+                            />
+                          )}
+                        </div>
+                        <span>{comic.title}</span>
+                        {comic.thumbnail.path === noImage ? (
+                          <div className="noImageComics">
+                            Image non disponible dans la base de données.
+                          </div>
+                        ) : (
+                          <img
+                            src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                            alt={comic.name}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>

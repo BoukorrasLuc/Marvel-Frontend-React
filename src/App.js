@@ -84,6 +84,7 @@ function App() {
               setErrorCharacter={setErrorCharacter}
               setUser={setUser}
               userToken={userToken}
+              userAccount={userAccount}
             />
           </Route>
           <Route path="/">
