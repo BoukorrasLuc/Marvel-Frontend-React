@@ -3,6 +3,7 @@ import "./Favoris.scss";
 // packages
 import Cookies from "js-cookie";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 // Import Images
 import HulkHandblack from "../../assets/images/Hulk-Hand-black.png";
@@ -13,6 +14,8 @@ const Favoris = ({
   errorComics,
   errorCharacter,
   setErrorCharacter,
+  setUser,
+  userToken,
 }) => {
   // Variable to change favorites
   let favoris = false;
@@ -83,9 +86,23 @@ const Favoris = ({
     reloadFavoris ? setReloadFavoris(false) : setReloadFavoris(true);
   };
 
+  let history = useHistory();
+
   return (
     <>
       <div className="favoris-container">
+        {userToken ? (
+          <div
+            className="p-favoris"
+            onClick={() => {
+              setUser(null);
+              history.push("/");
+            }}
+          >
+            <div>Logout</div>
+          </div>
+        ) : null}
+
         {/* If no favorite character in the cookie */}
         {!Cookies.get("FavorisCharacters") ||
         Cookies.get("FavorisCharacters") === "[]" ? (

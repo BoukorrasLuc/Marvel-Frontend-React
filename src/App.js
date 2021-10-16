@@ -68,10 +68,10 @@ function App() {
         />
         <Switch>
           <Route path="/comics/">
-            <Comics />
+            <Comics userToken={userToken} />
           </Route>
           <Route path="/characters/">
-            <Characters />
+            <Characters userToken={userToken} />
           </Route>
           <Route path="/character/:characterId">
             <CharacterId />
@@ -82,6 +82,8 @@ function App() {
               setErrorComics={setErrorComics}
               errorCharacter={errorCharacter}
               setErrorCharacter={setErrorCharacter}
+              setUser={setUser}
+              userToken={userToken}
             />
           </Route>
           <Route path="/">

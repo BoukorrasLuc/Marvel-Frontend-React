@@ -14,7 +14,7 @@ import SkipBar from "../../components/SkipBar/SkipBar";
 import HulkHandblack from "../../assets/images/Hulk-Hand-black.png";
 import HulkHandgreen from "../../assets/images/Hulk-Hand-green.png";
 
-const Comics = () => {
+const Comics = ({ userToken }) => {
   // Loader
   const { containerProps, indicatorEl } = useLoading({
     loading: true,
@@ -150,28 +150,31 @@ const Comics = () => {
               ) : (
                 <div className="comics-cards">
                   <div className="sectionLeft">
-                    <div
-                      className="comics-fav"
-                      onClick={() => handleFavorite(comics)}
-                    >
-                      {favorisComics ? (
-                        <img
-                          src={HulkHandgreen}
-                          alt=""
-                          style={{ height: "20px", width: "20px" }}
-                        />
-                      ) : (
-                        <img
-                          src={HulkHandblack}
-                          alt=""
-                          style={{
-                            height: "20px",
-                            width: "20px",
-                            backgroundColor: "#b60304",
-                          }}
-                        />
-                      )}
-                    </div>
+                    {userToken ? (
+                      <div
+                        className="comics-fav"
+                        onClick={() => handleFavorite(comics)}
+                      >
+                        {favorisComics ? (
+                          <img
+                            src={HulkHandgreen}
+                            alt=""
+                            style={{ height: "20px", width: "20px" }}
+                          />
+                        ) : (
+                          <img
+                            src={HulkHandblack}
+                            alt=""
+                            style={{
+                              height: "20px",
+                              width: "20px",
+                              backgroundColor: "#b60304",
+                            }}
+                          />
+                        )}
+                      </div>
+                    ) : null}
+
                     <span>{comics.title}</span>
 
                     {comics.thumbnail.path === noImage ? (

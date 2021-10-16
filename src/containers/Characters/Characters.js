@@ -16,7 +16,7 @@ import HulkHandblack from "../../assets/images/Hulk-Hand-black.png";
 import HulkHandgreen from "../../assets/images/Hulk-Hand-green.png";
 import Info from "../../assets/images/iconmonstr-info-thin-240.png";
 
-const Characters = () => {
+const Characters = ({ userToken }) => {
   const { containerProps, indicatorEl } = useLoading({
     loading: true,
     indicator: <Puff width="100" color="red" />,
@@ -146,25 +146,28 @@ const Characters = () => {
                     />
                   </Link>
                 )}
-                <div onClick={() => handleFavorite(characters)}>
-                  {favoris ? (
-                    <img
-                      src={HulkHandgreen}
-                      alt=""
-                      style={{ height: "20px", width: "20px" }}
-                    />
-                  ) : (
-                    <img
-                      src={HulkHandblack}
-                      alt=""
-                      style={{
-                        height: "20px",
-                        width: "20px",
-                        backgroundColor: "#b60304",
-                      }}
-                    />
-                  )}
-                </div>
+
+                {userToken ? (
+                  <div onClick={() => handleFavorite(characters)}>
+                    {favoris ? (
+                      <img
+                        src={HulkHandgreen}
+                        alt=""
+                        style={{ height: "20px", width: "20px" }}
+                      />
+                    ) : (
+                      <img
+                        src={HulkHandblack}
+                        alt=""
+                        style={{
+                          height: "20px",
+                          width: "20px",
+                          backgroundColor: "#b60304",
+                        }}
+                      />
+                    )}
+                  </div>
+                ) : null}
               </div>
 
               <div className="name">{characters.name}</div>

@@ -42,36 +42,29 @@ const Header = ({
         >
           <div>Personnages</div>
         </Link>
-        <Link
-          className="p-favoris"
-          to="/Favoris"
-          style={{ textDecoration: "none" }}
-        >
-          <div>Favoris</div>
-        </Link>
 
         {userToken ? null : (
-          <div className="p-favoris" onClick={toggleModaleSignUp}>
-            <div>SignUp</div>
-          </div>
-        )}
+          <div>
+            <div className="p-favoris" onClick={toggleModaleSignUp}>
+              <div>SignUp/</div>
+            </div>
 
-        {userToken ? null : (
-          <div className="p-favoris" onClick={toggleModaleLogin}>
-            <div>Login</div>
+            <div className="p-favoris" onClick={toggleModaleLogin}>
+              <div>/Login</div>
+            </div>
           </div>
         )}
 
         {userToken ? (
-          <div
+          <Link
             className="p-favoris"
-            onClick={() => {
-              setUser(null);
-            }}
+            to="/Favoris"
+            style={{ textDecoration: "none" }}
           >
-            <div>Logout</div>
-          </div>
+            <div>Votre Compte</div>
+          </Link>
         ) : null}
+
         <Link to="/">
           <img className="img2" src={header} alt="Super héros Marvel" />
         </Link>
