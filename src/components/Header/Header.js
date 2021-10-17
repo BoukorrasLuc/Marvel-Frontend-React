@@ -61,7 +61,7 @@ const Header = ({
             to="/Favoris"
             style={{ textDecoration: "none" }}
           >
-            <div>Votre Compte</div>
+            <div>Vos Favoris</div>
           </Link>
         ) : null}
 

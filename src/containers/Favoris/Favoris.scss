@@ -51,89 +51,123 @@
     display: flex;
     flex-direction: row;
 
-    .favorisCharactersError,
-    .favorisComicsError {
-      height: 100%;
-      span {
-        background-color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10px;
-        color: black;
-        margin-right: 20px;
-      }
-    }
-
-    .favoris-comics,
-    .favoris-characters {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      .card {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: rgb(0, 0, 0);
-        margin: 50px 10px;
-        width: 350px;
-        border-radius: 20px;
-        .characters,
-        .comics {
-          img {
-            height: 20px;
-            width: 20px;
-          }
-        }
-        .noImageCharacters,
-        .noImageComics {
+    .favoris-charactersContainer {
+      min-height: calc(100vh - 152px);
+      .favorisCharactersError {
+        height: 100%;
+        span {
+          background-color: white;
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 300px;
-          width: 300px;
-          margin: 20px;
-          color: red;
-          font-size: 15px;
-          border: solid 1px red;
-        }
-        .noImageCharacters {
-          height: 300px;
-        }
-        .noImageComics {
-          height: 450px;
+          margin-top: 10px;
+          color: black;
+          margin-right: 20px;
         }
       }
-      span {
-        color: white;
-        text-align: center;
+      .favoris-characters {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        .card {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background-color: rgb(0, 0, 0);
+          margin: 50px 10px;
+          width: 350px;
+          border-radius: 20px;
+          img {
+            height: 300px;
+            width: 300px;
+            object-fit: cover;
+            margin: 20px;
+          }
+          .characters {
+            img {
+              height: 20px;
+              width: 20px;
+            }
+          }
+          span {
+            color: white;
+            text-align: center;
+          }
+          .noImageCharacters {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            width: 300px;
+            margin: 20px;
+            color: red;
+            font-size: 15px;
+            border: solid 1px red;
+          }
+        }
       }
     }
 
-    .favoris-comics {
-      min-height: calc(100vh - 100px);
-      .card {
-        height: 650px;
+    .favoris-comicsContainer {
+      min-height: calc(100vh - 152px);
 
-        img {
-          width: 300px;
-          height: 450px;
-          margin: 20px;
+      .favorisComicsError {
+        height: 100%;
+        span {
+          background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 10px;
+          color: black;
+          margin-right: 20px;
         }
       }
-    }
-    .favoris-characters {
-      min-height: calc(100vh - 100px);
-      .card {
-        height: 500px;
+      .favoris-comics {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        .card {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background-color: rgb(0, 0, 0);
+          margin: 50px 10px;
+          width: 350px;
+          height: 650px;
+          border-radius: 20px;
+          img {
+            width: 300px;
+            height: 450px;
+            margin: 20px;
+          }
 
-        img {
-          height: 300px;
-          width: 300px;
-          object-fit: cover;
-          margin: 20px;
+          .comics {
+            img {
+              height: 20px;
+              width: 20px;
+            }
+          }
+
+          .noImageComics {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 450px;
+            width: 300px;
+            margin: 20px;
+            color: red;
+            font-size: 15px;
+            border: solid 1px red;
+          }
+        }
+        span {
+          color: white;
+          text-align: center;
         }
       }
     }
