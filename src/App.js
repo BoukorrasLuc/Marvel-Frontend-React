@@ -68,7 +68,13 @@ function App() {
         />
         <Switch>
           <Route path="/comics/">
-            <Comics userToken={userToken} />
+            <Comics
+              userToken={userToken}
+              toggleModaleSignUp={toggleModaleSignUp}
+              toggleModaleLogin={toggleModaleLogin}
+              reveleModaleLogin={reveleModaleLogin}
+              changeReveleModaleLogin={changeReveleModaleLogin}
+            />
           </Route>
           <Route path="/characters/">
             <Characters userToken={userToken} />

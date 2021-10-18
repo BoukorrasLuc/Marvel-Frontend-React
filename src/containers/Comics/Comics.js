@@ -14,7 +14,12 @@ import SkipBar from "../../components/SkipBar/SkipBar";
 import HulkHandblack from "../../assets/images/Hulk-Hand-black.png";
 import HulkHandgreen from "../../assets/images/Hulk-Hand-green.png";
 
-const Comics = ({ userToken }) => {
+const Comics = ({
+  userToken,
+  toggleModaleLogin,
+  reveleModaleLogin,
+  changeReveleModaleLogin,
+}) => {
   // Loader
   const { containerProps, indicatorEl } = useLoading({
     loading: true,
@@ -32,6 +37,19 @@ const Comics = ({ userToken }) => {
   const [limit, setLimit] = useState(20);
   const [skip, setSkip] = useState(0);
   const [page, setPage] = useState(1);
+
+  // No Scroll if modal is open
+
+  // const windowHeight = window.innerHeight;
+  let containerWappred = document.getElementById("containerWappred");
+  // // container.style.height = `${windowHeight}px`;
+
+  if (reveleModaleLogin === true) {
+    // console.log("modal open");
+    // console.log(container);
+    containerWappred.style.overflow = "hidden";
+    containerWappred.style.height = "77.2vh";
+  }
 
   let favorisComics = false;
 
@@ -109,7 +127,7 @@ const Comics = ({ userToken }) => {
         limit={limit}
       />
 
-      <div className="comics-wrapped">
+      <div className="comics-wrapped" id="containerWappred">
         {data.results.map((comics, index) => {
           favorisComics = false;
           // if the id of my current comic book is present in the cookie

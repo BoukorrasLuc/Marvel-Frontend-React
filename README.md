@@ -23,7 +23,8 @@ I have used these packages :
 - Search bar: search the database for comics or characters corresponding to the entry.
 - pagination.
 - skipbar
-- Saving several favorites in cookies
+- A user can register and log in.
+- Saving several favorites in cookies if the user is logged in
 
 [click here to visit](https://marvel-luc.netlify.app/)
 

@@ -9,26 +9,26 @@ section {
   height: 100vh;
 }
 
-@media (max-width: 576px) {
-  header {
-    font-size: 15px;
-    .img1 {
-      height: 40px;
-    }
-    .img2 {
-      height: 40px;
-    }
-  }
-  .home-container {
-    img {
-      width: 125px;
-      height: 190px;
-    }
+// @media (max-width: 576px) {
+//   header {
+//     font-size: 15px;
+//     .img1 {
+//       height: 40px;
+//     }
+//     .img2 {
+//       height: 40px;
+//     }
+//   }
+//   .home-container {
+//     img {
+//       width: 125px;
+//       height: 190px;
+//     }
 
-    .containereffect1,
-    .containereffect2 {
-      width: 125px;
-      height: 190px;
-    }
-  }
-}
+//     .containereffect1,
+//     .containereffect2 {
+//       width: 125px;
+//       height: 190px;
+//     }
+//   }
+// }
