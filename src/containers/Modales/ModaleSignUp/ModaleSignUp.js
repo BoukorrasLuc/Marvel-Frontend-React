@@ -51,7 +51,7 @@ const ModaleSignUp = ({
             <div className="wrapperModaleSignUp">
               <div className="modaleModaleSignUp">
                 <div className="modaleTop">
-                  <h2>S'inscrire</h2>
+                  <h2>Register now</h2>
                 </div>
 
                 {/* we create a form to retrieve the data we need for authentication */}
@@ -61,7 +61,7 @@ const ModaleSignUp = ({
                   <div className="username">
                     <input
                       type="text"
-                      placeholder="Nom d'utilisateur"
+                      placeholder="Username"
                       value={username}
                       onChange={(event) => setUsername(event.target.value)}
                     />
@@ -69,7 +69,7 @@ const ModaleSignUp = ({
                   <div className="email">
                     <input
                       type="email"
-                      placeholder="Email"
+                      placeholder="E-mail"
                       value={email}
                       onChange={(event) => {
                         setEmail(event.target.value);
@@ -81,7 +81,7 @@ const ModaleSignUp = ({
                   <div className="password">
                     <input
                       type="password"
-                      placeholder="Mot de passe"
+                      placeholder="Password"
                       autoComplete="on"
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
@@ -89,7 +89,7 @@ const ModaleSignUp = ({
                   </div>
 
                   <button className="submit" type="submit">
-                    Se connecter
+                    To log in
                   </button>
                 </form>
                 <button

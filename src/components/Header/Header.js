@@ -40,7 +40,7 @@ const Header = ({
           to="/characters"
           style={{ textDecoration: "none" }}
         >
-          <div>Personnages</div>
+          <div>Characters</div>
         </Link>
 
         {userToken ? null : (
@@ -61,7 +61,7 @@ const Header = ({
             to="/Favoris"
             style={{ textDecoration: "none" }}
           >
-            <div>Vos Favoris</div>
+            <div>Your favorites</div>
           </Link>
         ) : null}
 

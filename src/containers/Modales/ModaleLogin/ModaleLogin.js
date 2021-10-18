@@ -52,7 +52,7 @@ const ModaleLogin = ({
             <div className="wrapperModaleLogin">
               <div className="modaleModaleLogin">
                 <div className="modaleTop">
-                  <h2>Se connecter</h2>
+                  <h2>To log in</h2>
                 </div>
 
                 {/* we create a form to retrieve the data we need for authentication */}
@@ -65,7 +65,7 @@ const ModaleLogin = ({
                         setEmail(event.target.value);
                         setErrorMessage("");
                       }}
-                      placeholder="Adresse email"
+                      placeholder="E-mail"
                       type="email"
                     />
                   </div>
@@ -73,7 +73,7 @@ const ModaleLogin = ({
                     <input
                       onChange={(event) => setPassword(event.target.value)}
                       type="password"
-                      placeholder="Mot de passe"
+                      placeholder="Password"
                       autoComplete="on"
                     />
                   </div>
@@ -81,7 +81,7 @@ const ModaleLogin = ({
                   <div>{errorMessage}</div>
 
                   <button className="submit" type="submit">
-                    Se connecter
+                    To log in
                   </button>
                 </form>
                 <button

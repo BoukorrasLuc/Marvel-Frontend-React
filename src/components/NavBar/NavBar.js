@@ -20,7 +20,7 @@ const NavBar = ({ page, setPage, skip, setSkip, limit, setSearch, data }) => {
         <input
           className="search"
           type="search"
-          placeholder="Rechercher ..."
+          placeholder="Search ..."
           onChange={(e) => {
             setSearch(e.target.value);
           }}
