@@ -19,7 +19,7 @@ const ModaleLogin = ({
 
   const history = useHistory();
 
-  // we create a function which makes a request to find the user
+  // We create a function which makes a request to find the user
   const onSubmit = async (event) => {
     try {
       event.preventDefault();

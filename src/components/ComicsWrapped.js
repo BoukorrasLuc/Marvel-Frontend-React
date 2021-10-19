@@ -87,7 +87,7 @@ const ComicsWrapped = ({
                         backgroundColor: "black",
                       }}
                     >
-                      Image non disponible dans la base de données.
+                      Image not available in the database.
                     </div>
                   ) : (
                     <img
@@ -109,7 +109,7 @@ const ComicsWrapped = ({
                         textAlign: "center",
                       }}
                     >
-                      Non disponible dans la base de données.
+                      Not available in the database.
                     </div>
                   ) : (
                     <div>{newDescription.substring(0, 1000)}</div>

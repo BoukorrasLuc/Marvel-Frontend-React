@@ -1,3 +1,4 @@
+// Scss
 import "./SkipBar.scss";
 
 const SkipBar = ({ setLimit }) => {

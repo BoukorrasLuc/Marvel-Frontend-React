@@ -45,11 +45,11 @@ const Header = ({
 
         {userToken ? null : (
           <div>
-            <div className="p-favoris" onClick={toggleModaleSignUp}>
+            <div className="p-signup" onClick={toggleModaleSignUp}>
               <div>SignUp/</div>
             </div>
 
-            <div className="p-favoris" onClick={toggleModaleLogin}>
+            <div className="p-login" onClick={toggleModaleLogin}>
               <div>/Login</div>
             </div>
           </div>

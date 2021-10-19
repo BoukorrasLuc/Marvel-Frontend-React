@@ -1,3 +1,4 @@
+// Scss
 import "./NavBar.scss";
 
 // import Icons

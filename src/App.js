@@ -25,10 +25,11 @@ import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 library.add(faAngleRight, faAngleLeft);
 
 function App() {
-  // state to store the errors to display.
+  // State to store the errors to display.
   const [errorComics, setErrorComics] = useState("");
   const [errorCharacter, setErrorCharacter] = useState("");
 
+  // State to store info User
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const [userAccount, setUserAccount] = useState();
 

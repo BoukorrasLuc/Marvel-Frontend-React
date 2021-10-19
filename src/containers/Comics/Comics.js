@@ -1,12 +1,13 @@
+// Scss
 import "./Comics.scss";
 
-// packages
+// Packages
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useLoading, Puff } from "@agney/react-loading";
 
-// components
+// Components
 import NavBar from "../../components/NavBar/NavBar";
 import SkipBar from "../../components/SkipBar/SkipBar";
 import ComicsWrapped from "../../components/ComicsWrapped";
@@ -22,7 +23,7 @@ const Comics = ({ userToken, reveleModaleLogin, reveleModaleSignUp }) => {
     indicator: <Puff width="100" color="red" />,
   });
 
-  // state to store the request data
+  // State to store the request data
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,7 +37,7 @@ const Comics = ({ userToken, reveleModaleLogin, reveleModaleSignUp }) => {
 
   // No Scroll if modal is open
   let windowSize = window.innerHeight;
-  let newSize = windowSize - 215;
+  let newSize = windowSize - 214;
   let newSizePixel = `${newSize}px`;
 
   let favorisComics = false;
@@ -51,14 +52,14 @@ const Comics = ({ userToken, reveleModaleLogin, reveleModaleSignUp }) => {
     let newTabFavoris = [];
     let existAlready = false;
 
-    // if a cookie exists
+    // If a cookie exists
     if (typeof Cookies.get("FavorisComics") === "undefined") {
-      // push comics
+      // Push comics
       newTabFavoris.push(comics);
       // I add this array in the cookie
       Cookies.set("FavorisComics", newTabFavoris);
     } else {
-      // parse to treat it as the array
+      // Parse to treat it as the array
       newTabFavoris = JSON.parse(Cookies.get("FavorisComics"));
       // I look in my object array if the comic book is already present
       for (let i = 0; i < newTabFavoris.length; i++) {
@@ -76,7 +77,7 @@ const Comics = ({ userToken, reveleModaleLogin, reveleModaleSignUp }) => {
       if (existAlready === false) {
         // I then add my comics in my array
         newTabFavoris.push(comics);
-        // and in my cookie
+        // And in my cookie
         Cookies.set("FavorisComics", newTabFavoris);
       }
     }

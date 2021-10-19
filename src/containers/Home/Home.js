@@ -35,7 +35,7 @@ const Home = () => {
           className="link"
         >
           <div className="containerEffect2">
-            <div className="Titre">Personnages</div>
+            <div className="Titre">Characters</div>
             <div className="card">
               <div className="front">
                 <img alt="Comics" src={characters} />

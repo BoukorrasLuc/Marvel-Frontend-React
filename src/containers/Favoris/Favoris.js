@@ -1,6 +1,7 @@
+// Scss
 import "./Favoris.scss";
 
-// packages
+// Packages
 import Cookies from "js-cookie";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -49,7 +50,7 @@ const Favoris = ({
         // I look in my object array if the character is already present
         for (let i = 0; i < newTabFavoris.length; i++) {
           if (newTabFavoris[i]._id === elem._id) {
-            // the id is already present, so i pass my variable to true / THEREFORE DELETE FAVORITES
+            // The id is already present, so i pass my variable to true / THEREFORE DELETE FAVORITES
             isAlreadyExist = true;
             // This means that i want to delete this character from my cookie
             newTabFavoris.splice(i, 1);
@@ -94,8 +95,8 @@ const Favoris = ({
       <div className="favoris-container">
         <div className="topContainer">
           <div className="titre">
-            Bonjour {userAccount.username}, bienvenue sur votre compte où tous
-            les favoris sont enregistrés.
+            Hello {userAccount.username}, welcome to your account where everyone
+            favorites are saved.
           </div>
           {userToken ? (
             <div
@@ -164,7 +165,7 @@ const Favoris = ({
 
                         {character.thumbnail.path === noImage ? (
                           <div className="noImageCharacters">
-                            Image non disponible dans la base de données.
+                            Image not available in the database.
                           </div>
                         ) : (
                           <img
@@ -224,7 +225,7 @@ const Favoris = ({
                         <span>{comic.title}</span>
                         {comic.thumbnail.path === noImage ? (
                           <div className="noImageComics">
-                            Image non disponible dans la base de données.
+                            Image not available in the database.
                           </div>
                         ) : (
                           <img
