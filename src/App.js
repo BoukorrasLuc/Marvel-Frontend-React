@@ -70,10 +70,8 @@ function App() {
           <Route path="/comics/">
             <Comics
               userToken={userToken}
-              toggleModaleSignUp={toggleModaleSignUp}
-              toggleModaleLogin={toggleModaleLogin}
               reveleModaleLogin={reveleModaleLogin}
-              changeReveleModaleLogin={changeReveleModaleLogin}
+              reveleModaleSignUp={reveleModaleSignUp}
             />
           </Route>
           <Route path="/characters/">

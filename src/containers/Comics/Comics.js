@@ -14,12 +14,7 @@ import SkipBar from "../../components/SkipBar/SkipBar";
 import HulkHandblack from "../../assets/images/Hulk-Hand-black.png";
 import HulkHandgreen from "../../assets/images/Hulk-Hand-green.png";
 
-const Comics = ({
-  userToken,
-  toggleModaleLogin,
-  reveleModaleLogin,
-  changeReveleModaleLogin,
-}) => {
+const Comics = ({ userToken, reveleModaleLogin, reveleModaleSignUp }) => {
   // Loader
   const { containerProps, indicatorEl } = useLoading({
     loading: true,
@@ -39,20 +34,10 @@ const Comics = ({
   const [page, setPage] = useState(1);
 
   // No Scroll if modal is open
-
-  // const windowHeight = window.innerHeight;
-  let containerWappred = document.getElementById("containerWappred");
-  // // container.style.height = `${windowHeight}px`;
-
-  if (reveleModaleLogin === true) {
-    // console.log("modal open");
-    // console.log(container);
-    containerWappred.style.overflow = "hidden";
-    containerWappred.style.height = "77.2vh";
-  }
+  let windowSize = window.innerHeight;
+  let newSize = windowSize - 215;
 
   let favorisComics = false;
-
   // State which allows you to restart the request when the content of the cookie changes
   const [reloadRequestFavoris, setReloadRequestFavoris] = useState(false);
   const handleFavorite = (comics) => {
@@ -127,125 +112,242 @@ const Comics = ({
         limit={limit}
       />
 
-      <div className="comics-wrapped" id="containerWappred">
-        {data.results.map((comics, index) => {
-          favorisComics = false;
-          // if the id of my current comic book is present in the cookie
-          if (typeof Cookies.get("FavorisComics") !== "undefined") {
-            let cookie = JSON.parse(Cookies.get("FavorisComics"));
-            for (let y = 0; y < cookie.length; y++) {
-              // If the id of the currently mapped comic book is present in the cookie, I pass the variable to true
-              if (cookie[y]._id === comics._id) {
-                // If the variable turns to true, then my star color turns into valid
-                favorisComics = true;
+      {reveleModaleLogin || reveleModaleSignUp ? (
+        <div
+          className="comics-wrapped"
+          style={{ height: `${newSize}px`, overflow: "hidden" }}
+        >
+          {data.results.map((comics, index) => {
+            favorisComics = false;
+            // if the id of my current comic book is present in the cookie
+            if (typeof Cookies.get("FavorisComics") !== "undefined") {
+              let cookie = JSON.parse(Cookies.get("FavorisComics"));
+              for (let y = 0; y < cookie.length; y++) {
+                // If the id of the currently mapped comic book is present in the cookie, I pass the variable to true
+                if (cookie[y]._id === comics._id) {
+                  // If the variable turns to true, then my star color turns into valid
+                  favorisComics = true;
+                }
               }
             }
-          }
 
-          const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
+            const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
 
-          // I am using a regex to search the string for all the html tags and I delete these tag
+            // I am using a regex to search the string for all the html tags and I delete these tag
+            let htmlTagRegexp = /<\w+>|<\/\w+>/g;
 
-          let htmlTagRegexp = /<\w+>|<\/\w+>/g;
-
-          function removeHTMLTag(data) {
-            if (htmlTagRegexp.test(data)) {
-              data = data.replace(htmlTagRegexp, "");
-              return data;
-            } else {
-              return data;
+            function removeHTMLTag(data) {
+              if (htmlTagRegexp.test(data)) {
+                data = data.replace(htmlTagRegexp, "");
+                return data;
+              } else {
+                return data;
+              }
             }
-          }
-          let newDescription = removeHTMLTag(comics.description);
+            let newDescription = removeHTMLTag(comics.description);
 
-          return (
-            <div key={comics._id}>
-              {(comics.thumbnail.path === noImage &&
-                comics.description === null) ||
-              (comics.thumbnail.path === noImage &&
-                comics.description === "") ? (
-                <></>
-              ) : (
-                <div className="comics-cards">
-                  <div className="sectionLeft">
-                    {userToken ? (
-                      <div
-                        className="comics-fav"
-                        onClick={() => handleFavorite(comics)}
-                      >
-                        {favorisComics ? (
-                          <img
-                            src={HulkHandgreen}
-                            alt=""
-                            style={{ height: "20px", width: "20px" }}
-                          />
-                        ) : (
-                          <img
-                            src={HulkHandblack}
-                            alt=""
-                            style={{
-                              height: "20px",
-                              width: "20px",
-                              backgroundColor: "#b60304",
-                            }}
-                          />
-                        )}
-                      </div>
-                    ) : null}
+            return (
+              <div key={comics._id}>
+                {(comics.thumbnail.path === noImage &&
+                  comics.description === null) ||
+                (comics.thumbnail.path === noImage &&
+                  comics.description === "") ? (
+                  <></>
+                ) : (
+                  <div className="comics-cards">
+                    <div className="sectionLeft">
+                      {userToken ? (
+                        <div
+                          className="comics-fav"
+                          onClick={() => handleFavorite(comics)}
+                        >
+                          {favorisComics ? (
+                            <img
+                              src={HulkHandgreen}
+                              alt=""
+                              style={{ height: "20px", width: "20px" }}
+                            />
+                          ) : (
+                            <img
+                              src={HulkHandblack}
+                              alt=""
+                              style={{
+                                height: "20px",
+                                width: "20px",
+                                backgroundColor: "#b60304",
+                              }}
+                            />
+                          )}
+                        </div>
+                      ) : null}
 
-                    <span>{comics.title}</span>
+                      <span>{comics.title}</span>
 
-                    {comics.thumbnail.path === noImage ? (
-                      <div
-                        style={{
-                          height: 450,
-                          width: 300,
-                          margin: 20,
-                          color: "white",
-                          fontSize: 25,
-                          textAlign: "center",
-                          display: "flex",
-                          alignItems: "center",
-                          backgroundColor: "black",
-                        }}
-                      >
-                        Image non disponible dans la base de données.
-                      </div>
-                    ) : (
-                      <img
-                        className="img-comics"
-                        src={
-                          comics.thumbnail.path +
-                          "." +
-                          comics.thumbnail.extension
-                        }
-                        alt={comics.title}
-                      />
-                    )}
+                      {comics.thumbnail.path === noImage ? (
+                        <div
+                          style={{
+                            height: 450,
+                            width: 300,
+                            margin: 20,
+                            color: "white",
+                            fontSize: 25,
+                            textAlign: "center",
+                            display: "flex",
+                            alignItems: "center",
+                            backgroundColor: "black",
+                          }}
+                        >
+                          Image non disponible dans la base de données.
+                        </div>
+                      ) : (
+                        <img
+                          className="img-comics"
+                          src={
+                            comics.thumbnail.path +
+                            "." +
+                            comics.thumbnail.extension
+                          }
+                          alt={comics.title}
+                        />
+                      )}
+                    </div>
+                    <div className="sectionRight">
+                      {comics.description === null ||
+                      comics.description === "" ? (
+                        <div
+                          style={{
+                            margin: 20,
+                            color: "white",
+                            fontSize: 25,
+                            textAlign: "center",
+                          }}
+                        >
+                          Non disponible dans la base de données.
+                        </div>
+                      ) : (
+                        <div>{newDescription.substring(0, 1000)}</div>
+                      )}
+                    </div>
                   </div>
-                  <div className="sectionRight">
-                    {comics.description === null ||
-                    comics.description === "" ? (
-                      <div
-                        style={{
-                          margin: 20,
-                          color: "white",
-                          fontSize: 25,
-                          textAlign: "center",
-                        }}
-                      >
-                        Non disponible dans la base de données.
-                      </div>
-                    ) : (
-                      <div>{newDescription.substring(0, 1000)}</div>
-                    )}
+                )}
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="comics-wrapped">
+          {data.results.map((comics, index) => {
+            favorisComics = false;
+            if (typeof Cookies.get("FavorisComics") !== "undefined") {
+              let cookie = JSON.parse(Cookies.get("FavorisComics"));
+              for (let y = 0; y < cookie.length; y++) {
+                if (cookie[y]._id === comics._id) {
+                  favorisComics = true;
+                }
+              }
+            }
+
+            const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
+            let htmlTagRegexp = /<\w+>|<\/\w+>/g;
+            function removeHTMLTag(data) {
+              if (htmlTagRegexp.test(data)) {
+                data = data.replace(htmlTagRegexp, "");
+                return data;
+              } else {
+                return data;
+              }
+            }
+            let newDescription = removeHTMLTag(comics.description);
+
+            return (
+              <div key={comics._id}>
+                {(comics.thumbnail.path === noImage &&
+                  comics.description === null) ||
+                (comics.thumbnail.path === noImage &&
+                  comics.description === "") ? (
+                  <></>
+                ) : (
+                  <div className="comics-cards">
+                    <div className="sectionLeft">
+                      {userToken ? (
+                        <div
+                          className="comics-fav"
+                          onClick={() => handleFavorite(comics)}
+                        >
+                          {favorisComics ? (
+                            <img
+                              src={HulkHandgreen}
+                              alt=""
+                              style={{ height: "20px", width: "20px" }}
+                            />
+                          ) : (
+                            <img
+                              src={HulkHandblack}
+                              alt=""
+                              style={{
+                                height: "20px",
+                                width: "20px",
+                                backgroundColor: "#b60304",
+                              }}
+                            />
+                          )}
+                        </div>
+                      ) : null}
+
+                      <span>{comics.title}</span>
+
+                      {comics.thumbnail.path === noImage ? (
+                        <div
+                          style={{
+                            height: 450,
+                            width: 300,
+                            margin: 20,
+                            color: "white",
+                            fontSize: 25,
+                            textAlign: "center",
+                            display: "flex",
+                            alignItems: "center",
+                            backgroundColor: "black",
+                          }}
+                        >
+                          Image non disponible dans la base de données.
+                        </div>
+                      ) : (
+                        <img
+                          className="img-comics"
+                          src={
+                            comics.thumbnail.path +
+                            "." +
+                            comics.thumbnail.extension
+                          }
+                          alt={comics.title}
+                        />
+                      )}
+                    </div>
+                    <div className="sectionRight">
+                      {comics.description === null ||
+                      comics.description === "" ? (
+                        <div
+                          style={{
+                            margin: 20,
+                            color: "white",
+                            fontSize: 25,
+                            textAlign: "center",
+                          }}
+                        >
+                          Non disponible dans la base de données.
+                        </div>
+                      ) : (
+                        <div>{newDescription.substring(0, 1000)}</div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
       <SkipBar setLimit={setLimit} />
     </div>
   );
