@@ -75,7 +75,11 @@ function App() {
             />
           </Route>
           <Route path="/characters/">
-            <Characters userToken={userToken} />
+            <Characters
+              userToken={userToken}
+              reveleModaleLogin={reveleModaleLogin}
+              reveleModaleSignUp={reveleModaleSignUp}
+            />
           </Route>
           <Route path="/character/:characterId">
             <CharacterId />

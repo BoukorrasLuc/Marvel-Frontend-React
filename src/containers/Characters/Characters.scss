@@ -8,22 +8,58 @@
 
   z-index: 1;
 
-  div {
+  .comics-wrapped {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 
-    .characters {
+    .characters-cards {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       flex-direction: column;
       background-color: rgb(0, 0, 0);
       margin: 50px 10px;
       height: 500px;
       border-radius: 20px;
 
+      .top-cards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        .topConditionImgInfoOne {
+          text-decoration: "none";
+          // background-color: aqua;
+          height: 20px;
+          width: 20px;
+          margin: 23px;
+        }
+        .topConditionImgInfoTwo {
+          text-decoration: "none";
+          img {
+            height: 20px;
+            width: 20px;
+          }
+        }
+      }
+
       .name {
         padding-top: 10px;
         color: white;
+      }
+
+      .noImage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        width: 300px;
+        margin: 20px;
+        color: red;
+        border: solid 1px red;
+        font-size: 16px;
       }
 
       img {

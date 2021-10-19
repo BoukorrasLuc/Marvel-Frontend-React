@@ -24,7 +24,6 @@ const Characters = ({ userToken }) => {
 
   // state to store the request data
   const [data, setData] = useState();
-
   const [isLoading, setIsLoading] = useState(true);
 
   // State to store the data received in the input search
@@ -35,8 +34,12 @@ const Characters = ({ userToken }) => {
   const [skip, setSkip] = useState(0);
   const [page, setPage] = useState(1);
 
-  let favoris = false;
+  // No Scroll if modal is open
+  let windowSize = window.innerHeight;
+  let newSize = windowSize - 215;
+  let newSizePixel = `${newSize}px`;
 
+  let favoris = false;
   // State which allows you to restart the request when the content of the cookie changes
   const [reloadRequestFavoris, setReloadRequestFavoris] = useState(false);
   const handleFavorite = (characters) => {
@@ -109,7 +112,7 @@ const Characters = ({ userToken }) => {
         limit={limit}
       />
 
-      <div>
+      <div className="comics-wrapped">
         {data.results.map((characters, index) => {
           favoris = false;
           // if the id of my current comic book is present in the cookie
@@ -127,23 +130,19 @@ const Characters = ({ userToken }) => {
           const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
 
           return (
-            <div className="characters" key={characters._id}>
-              <div>
+            <div className="characters-cards" key={characters._id}>
+              <div className="top-cards">
                 {characters.comics.length === 0 ? (
                   <Link
+                    className="topConditionImgInfoOne"
                     to={`/character/${characters._id}`}
-                    style={{ textDecoration: "none" }}
                   ></Link>
                 ) : (
                   <Link
+                    className="topConditionImgInfoTwo"
                     to={`/character/${characters._id}`}
-                    style={{ textDecoration: "none" }}
                   >
-                    <img
-                      src={Info}
-                      alt=""
-                      style={{ height: "20px", width: "20px" }}
-                    />
+                    <img src={Info} alt="" />
                   </Link>
                 )}
 
@@ -173,16 +172,7 @@ const Characters = ({ userToken }) => {
               <div className="name">{characters.name}</div>
 
               {characters.thumbnail.path === noImage ? (
-                <div
-                  style={{
-                    height: 300,
-                    width: 300,
-                    margin: 20,
-                    color: "red",
-                    fontSize: 15,
-                    border: "solid 1px red",
-                  }}
-                >
+                <div className="noImage">
                   Image non disponible dans la base de données.
                 </div>
               ) : (
