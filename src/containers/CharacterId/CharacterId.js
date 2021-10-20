@@ -67,19 +67,7 @@ const CharacterId = () => {
                     <span>{comics.title}</span>
 
                     {comics.thumbnail.path === noImage ? (
-                      <div
-                        style={{
-                          height: 450,
-                          width: 300,
-                          margin: 20,
-                          color: "white",
-                          fontSize: 25,
-                          textAlign: "center",
-                          display: "flex",
-                          alignItems: "center",
-                          backgroundColor: "black",
-                        }}
-                      >
+                      <div className="noImage">
                         Image not available in the database.
                       </div>
                     ) : (
@@ -97,14 +85,7 @@ const CharacterId = () => {
                   <div className="sectionRight">
                     {comics.description === null ||
                     comics.description === "" ? (
-                      <div
-                        style={{
-                          margin: 20,
-                          color: "white",
-                          fontSize: 25,
-                          textAlign: "center",
-                        }}
-                      >
+                      <div className="noInfo">
                         Not available in the database.
                       </div>
                     ) : (

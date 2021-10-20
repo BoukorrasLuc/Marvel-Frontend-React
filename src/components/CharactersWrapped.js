@@ -33,6 +33,7 @@ const CharactersWrapped = ({
         }
 
         const noImage = `http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available`;
+        const noImage2 = `http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708`;
 
         return (
           <div className="characters-cards" key={characters._id}>
@@ -76,7 +77,8 @@ const CharactersWrapped = ({
 
             <div className="name">{characters.name}</div>
 
-            {characters.thumbnail.path === noImage ? (
+            {characters.thumbnail.path === noImage ||
+            characters.thumbnail.path === noImage2 ? (
               <div className="noImage">
                 Image not available in the database.
               </div>

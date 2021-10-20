@@ -48,6 +48,17 @@
           font-size: 20px;
           margin: 5px;
         }
+        .noImage {
+          display: flex;
+          align-items: center;
+          height: 450px;
+          width: 300px;
+          margin: 20px;
+          color: white;
+          font-size: 25px;
+          text-align: center;
+          background-color: black;
+        }
       }
       .sectionRight {
         color: white;
@@ -55,6 +66,12 @@
         width: 50%;
         margin: 20px;
         cursor: pointer;
+        .noInfo {
+          margin: 20px;
+          color: white;
+          font-size: 25px;
+          text-align: center;
+        }
       }
     }
   }
