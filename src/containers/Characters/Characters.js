@@ -25,6 +25,8 @@ const Characters = ({ userToken, reveleModaleSignUp, reveleModaleLogin }) => {
 
   // State to store the request data
   const [data, setData] = useState();
+
+  // State to Loading
   const [isLoading, setIsLoading] = useState(true);
 
   // State to store the data received in the input search

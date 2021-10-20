@@ -8,14 +8,18 @@ import axios from "axios";
 import { useLoading, Puff } from "@agney/react-loading";
 
 const CharacterId = () => {
+  // State to Loading
   const { containerProps, indicatorEl } = useLoading({
     loading: true,
     indicator: <Puff width="100" color="red" />,
   });
-
-  const { characterId } = useParams();
-  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  // State to store the request data
+  const [data, setData] = useState();
+
+  // useParams
+  const { characterId } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
