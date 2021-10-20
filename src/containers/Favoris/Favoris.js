@@ -95,8 +95,9 @@ const Favoris = ({
       <div className="favoris-container">
         <div className="topContainer">
           <div className="titre">
-            Hello {userAccount.username}, welcome to your account where everyone
-            favorites are saved.
+            Hello
+            {/* {userAccount.username} */}, welcome to your account where
+            everyone favorites are saved.
           </div>
           {userToken ? (
             <div
@@ -117,7 +118,7 @@ const Favoris = ({
             {!Cookies.get("FavorisCharacters") ||
             Cookies.get("FavorisCharacters") === "[]" ? (
               <div className="favorisCharactersError">
-                {setErrorCharacter("Aucun résultat de personnages")}
+                {setErrorCharacter("No character results")}
                 <span>{errorCharacter}</span>
               </div>
             ) : (
@@ -185,7 +186,7 @@ const Favoris = ({
             {!Cookies.get("FavorisComics") ||
             Cookies.get("FavorisComics") === "[]" ? (
               <div className="favorisComicsError">
-                {setErrorComics("Aucun résultat de comics")}
+                {setErrorComics("No comic book results")}
                 <span>{errorComics}</span>
               </div>
             ) : (
