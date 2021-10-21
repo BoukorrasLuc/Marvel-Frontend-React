@@ -37,6 +37,8 @@ const ComicsWrapped = ({
         }
         let newDescription = removeHTMLTag(comics.description);
 
+        console.log(comics);
+
         return (
           <div key={comics._id}>
             {(comics.thumbnail.path === noImage &&
