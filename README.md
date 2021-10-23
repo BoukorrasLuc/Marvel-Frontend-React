@@ -28,7 +28,10 @@ I have used these packages :
 - The password must contain a minimum of 10 characters and a maximum of 20, there must be a capital letter, a number and a special character.
 - Saving several favorites in cookies if the user is logged in
 
+### Link
+
 [click here to visit](https://marvel-luc.netlify.app/)
+[backend link on github](https://github.com/BoukorrasLuc/Marvel-backend)
 
 ### Screenshots
 
