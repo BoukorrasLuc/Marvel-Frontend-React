@@ -30,8 +30,8 @@ I have used these packages :
 
 ### Link
 
-[click here to visit](https://marvel-luc.netlify.app/)
-[backend link on github](https://github.com/BoukorrasLuc/Marvel-backend)
+==> [Click here to visit](https://marvel-luc.netlify.app/)<br>
+==> [Backend link on github](https://github.com/BoukorrasLuc/Marvel-backend)
 
 ### Screenshots
 
